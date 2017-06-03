@@ -1,0 +1,498 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>我的收藏</title>
+	<meta name="description" content="">
+	<meta name="author" content="吾掌勺">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<meta name="apple-mobile-web-app-title" content="吾掌勺">
+	<link rel="stylesheet" href="css/allcss.css">
+	<link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" href="css/mui.picker.css">
+	<link rel="stylesheet" href="css/mui.poppicker.css">
+
+	<style>
+		.timePicker{
+			width: 210px;
+			height: 30px;
+			font-size: 15px;
+			color: #FFFFFF;
+			margin: 20px auto;
+			background: #EF2432;
+			border-radius: 100px;
+			line-height: 30px;
+		}
+		#triangle-down {
+			width: 0;
+			height: 0;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-top: 8px solid #A6A6A6;
+			margin-top: 7px;
+			display: inline-block;
+
+		}
+		#picked{
+			width: 170px;
+			height: 30px;
+			background-color: transparent;
+			text-align: center;
+			padding: 0;margin: 0;
+			margin-left: 10px;
+			border: none;
+		}
+
+		.date_yy {
+			display: none;
+		}
+
+		.nianyue {
+			margin-left: -6.07rem;
+			text-align: center;
+		}
+
+		.gear {
+			width: 31%!important;
+			font-size: .7rem;
+		}
+
+		.date_dd {
+			margin-left: 1.6rem;
+		}
+
+		.mui-poppicker, .mui-picker {
+			border-radius: .5rem;
+		}
+		.mui-poppicker .mui-poppicker-body{
+			background: #fff;
+			opacity: 0.9;
+		}
+		.mui-poppicker-btn-cancel {
+			display: none;
+		}
+		.mui-poppicker {
+			width: 94.6%;
+			margin-left: 2.7%;
+			background: transparent;
+			margin-bottom: 4.2rem;
+			border-radius: .5rem;
+		}
+
+		.mui-poppicker-body {
+			border-radius: .5rem;
+			padding: 0 20px;
+			background: #fff;
+		}
+		.mui-poppicker-body .mui-picker {
+			background: #fff;
+		}
+
+		.highlight {
+			color: #0076FF!important;
+		}
+
+		.mui-dtpicker-title {
+			display: none;
+		}
+
+		.mui-pciker-rule-ft {
+			border: none;
+		}
+
+		.mui-poppicker-btn-ok {
+			width: 100%;
+			background: #fff;
+			color: #000;
+			border: none;
+			padding: 0;
+			letter-spacing: 10px;
+		}
+
+		.mui-poppicker-header {
+			position: fixed;
+			width: 100%;
+			bottom: -3.6rem;
+			background: #fff;
+			border-radius: .5rem;
+		}
+		.mui-poppicker-header .mui-btn{
+			padding: 0;
+			font-size: 20px;
+		}
+	</style>
+
+</head>
+
+<body class="myBody">
+
+	<!--footer-->
+	<div class="mui-bar mui-bar-footer mui-bar-bg">
+		<div class="mui-row mui-text-center">
+
+			<div class="mui-col-xs-3 foot-list">
+				<a href="index.html">
+					<i class="iconfont icon-zhuye"></i><br/>
+					<span class="foot-text">首页</span>
+				</a>
+			</div>
+
+			<div class="mui-col-xs-3 foot-list ">
+				<a href="dingdan.html">
+					<i class="iconfont icon-dingdan"></i><br/>
+					<span class="foot-text">订单</span>
+				</a>
+			</div>
+
+			<div class="mui-col-xs-3 foot-list active-page">
+				<a href="#">
+					<i class="iconfont icon-shoucang"></i><br/>
+					<span class="foot-text">收藏</span>
+				</a>
+			</div>
+
+			<div class="mui-col-xs-3 foot-list">
+				<a href="personalCenter.html">
+					<i class="iconfont icon-foot04"></i><br/>
+					<span class="foot-text">我的</span>
+				</a>
+			</div>
+
+		</div>
+	</div>
+	<!--footer end-->
+	<!-- content-->
+	<div class="mui-content mui-content-bg">
+		<div class="swiper-container mxr-swiper-container-collect">
+		<div class="my-pagination">
+			<ul class="my-pagination-ul">
+				<li class="swiper-pagination-bullet mySwiper-title-bg swiper-pagination-bullet-active">收藏的厨师</li>
+				<li class="swiper-pagination-bullet mySwiper-title-bg">收藏的公司</li>
+			</ul>
+		</div>
+		<div class="swiper-wrapper mxr-swiper-wrapper">
+
+			<!--收藏的厨师-->
+			<div class="swiper-slide mxr-swiper-slide">
+				<section class="dingdan-wrap">
+					<div class="timePicker" id="timePicker">
+						<input type="text" name="serviceTime" id="picked" value="" placeholder="用餐时间"><span id="triangle-down"></span>
+						<!--<span id="picked">用餐时间</span>-->
+					</div>
+					<div id="scList">
+
+					</div>
+
+				</section>
+			</div>
+			<!--收藏的公司-->
+			<div class="swiper-slide mxr-swiper-slide">
+				<section class="dingdan-wrap" id="sc_org">
+					<!--<div class="dingdan-list collect-wrap">
+						<div class="mui-row collect-com-wrap">
+							<div class="mui-col-xs-5">
+								<div class="canting-pic">
+									<img src="images/canting.png">
+								</div>
+							</div>
+							<div class="mui-col-xs-7">
+								<p class="com-title-font">草行有限耍锅公司</p>
+								<span class="com-info-font over-hidden opcity06">承包婚礼宴席、年夜饭......</span>
+							</div>
+						</div>
+						<div class="com-location over-hidden">
+							<span class="iconfont icon-location fs15-mxr location-icon-color"></span><span class="opcity06">位于浦东新区张江高科碧波路123号5号楼5楼</span>
+						</div>
+					</div>
+
+					<div class="dingdan-list collect-wrap">
+						<div class="mui-row collect-com-wrap">
+							<div class="mui-col-xs-5">
+								<div class="canting-pic">
+									<img src="images/canting.png">
+								</div>
+							</div>
+							<div class="mui-col-xs-7">
+								<p class="com-title-font">草行有限耍锅公司</p>
+								<span class="com-info-font over-hidden opcity06">承包婚礼宴席、年夜饭......</span>
+							</div>
+						</div>
+						<div class="com-location over-hidden">
+							<span class="iconfont icon-location fs15-mxr location-icon-color"></span><span class="opcity06">位于浦东新区张江高科碧波路123号5号楼5楼</span>
+						</div>
+					</div>-->
+				</section>
+			</div>
+		</div>
+	</div>
+		<!--时间容器-->
+	 	<div id="targetContainers"></div>
+	</div>
+
+<!--<script src="js/lib/require.js" data-main="js/app/main"></script>-->
+<script src="js/lib/zepto.min.js"></script>
+<script src="js/lib/swiper.min.js"></script>
+<script src="js/lib/mui.min.js"></script>
+<script src="js/lib/mui.picker.js"></script>
+<script src="js/lib/mui.poppicker.js"></script>
+
+<script>
+
+	var getHourMin = function(start, end){
+		var startTime = start || "10:00",
+				endTime = end || "20:00",
+				startHM = startTime.split(":"),
+				endHM = endTime.split(":"),
+				timeList = [];
+		for (var i = startHM[0]; i <= endHM[0]; i++){
+			timeList.push({
+				value: i + ":00",
+				text: i + ":00"
+			});
+			if(i != endHM[0]){
+				timeList.push({
+					value: i + ":30",
+					text: i + ":30"
+				});
+			}
+		}
+		return timeList;
+	};
+
+	/**
+	 * 生成日期，mui需要的二级联动数据
+	 * 参数： start开始日期， end结束日期
+	 * 例：getYearMonthDay(new Date(), "2017-7-1 00:00:00")
+	 * 返回数组： mui可直接使用
+	 * */
+	var getYearMonthDay = function(start, end){
+		var startDate = new Date(start || new Date()),
+				endDate = new Date(end || "2018-1-1 00:00:00"),
+				dateList = [],
+				oneDay = 24*60*60*1000,
+				len = parseInt((endDate-startDate)/oneDay),
+				hm = getHourMin("10:00", "20:00");
+
+		for (var i = 0; i< len; i++){
+			var newDate = new Date(startDate.getTime() + i*oneDay),
+					mm = newDate.getMonth() + 1,
+					dd = newDate.getDate();
+			mm = mm < 10 ? "0" + mm : mm;
+			dd = dd < 10 ? "0" + dd : dd;
+			dateList.push({
+				value: mm + '月' + dd + '日',
+				text: mm + '月' + dd + '日',
+				children: hm
+			});
+		}
+		return dateList;
+	};
+	var dataList = getYearMonthDay(new Date(), "2017-7-1 00:00:00");
+
+	var picker = new mui.PopPicker({
+		layer: 2
+	});
+	var time = '';
+	picker.setData(dataList);
+	var picked = document.getElementById('picked');
+
+	picked.addEventListener('tap', function(event) {
+		picker.show(function(e) {
+			var picked = document.getElementById('picked');
+			picked.value = e[0].text + e[1].text;
+
+			let riQi = e[0].text.replace('月','-');
+			let perfectRiQi = riQi.replace('日','');
+			time = (new Date()).getFullYear() + '-' + perfectRiQi  + ' ' + e[1].text;
+			console.log(time)
+
+			getTimeMade();
+		});
+	}, false);
+
+
+	function getTimeMade(){
+		$.ajax({
+			type: 'POST',
+			url: 'http://114.215.134.205/wzs-api/s/api',
+			data:{
+				accessToken: '',
+				version: '',
+				deviceType: '3',
+				requestCode: '70003',
+				user_id:27,
+				'page.currentPage':1,
+				'page.showCount':50,
+				time:time,
+				type:0
+			},
+			dataType:'json',
+			timeout:10000,
+			success:function(data){
+				console.log(data);
+
+				var scinfo = data.objects;	console.log(scinfo.length);
+				$("#scList").empty();
+				for(var i = 0 ; i < scinfo.length ; i++){
+					var head_img = scinfo[i].head_img_path;
+					var chefName = scinfo[i].name;
+					var goodat = scinfo[i].good_at_cook;
+					var score = scinfo[i].score;
+					var bigpic = scinfo[i].group_photo_path;
+
+					var list = "";
+					for(var j = 0 ; j < score; j++){
+						list += '<span class="iconfont icon-xingxing light"></span>'
+
+					}
+					if(score < 5){
+						for(var k = 0 ; k < 5 - score; k++){
+							list += '<span class="iconfont icon-xingxing"></span>'
+						}
+					}
+					$("#scList").append(
+							'<div class="dingdan-list collect-wrap">' +
+							'<div class="chef-pic-box">' +
+							'<img src="'+ bigpic +'" style="display: block">' +
+							'<div class="chef-outside">' +
+							'<div class="mui-row">' +
+							'<div class="mui-col-xs-4">' +
+							'<div class="favorite-chef-pic">' +
+							'<img src="'+ head_img +'"></div>' +
+							'</div>' +
+							'<div class="mui-col-xs-8 fs13-mxr chef-special-txt">' +
+							'<span>擅长：'+ goodat +'</span>' +
+							'</div></div>' +
+							'<div class="mui-row lin-height26"><div class="mui-col-xs-4 mui-text-center"><span class="fs15-mxr">'+ chefName +'</span></div><div class="mui-col-xs-8 fs13-mxr"><span class="chef-score">好评：'+ list +'</span> </div> </div> </div> </div> </div>'
+					);
+
+				}
+			},
+			error:function(xhr,type,errorThrown) {
+				console.log(type);
+			}
+		});
+	}
+
+    //    收藏的厨师   收藏的公司
+    $(function(){
+		//    收藏的厨师
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost/wzs-api/s/api',
+            data:{accessToken: '',version: '',deviceType: '3', requestCode: '70000',user_id:27,'page.currentPage':1,'page.showCount':50, type:0},
+            dataType:'json',
+            timeout:10000,
+
+            success:function(data){
+                console.log(data);
+                var scinfo = data.objects;
+                for(var i = 0 ; i < scinfo.length ; i++){
+                    var head_img = scinfo[i].head_img_path;
+                    var chefName = scinfo[i].name;
+                    var goodat = scinfo[i].good_at_cook;
+                    var score = scinfo[i].score;
+                    var bigpic = scinfo[i].group_photo_path;
+
+                    var list = "";
+                    for(var j = 0 ; j < score; j++){
+                        list += '<span class="iconfont icon-xingxing light"></span>'
+
+                    }
+                    if(score < 5){
+                        for(var k = 0 ; k < 5 - score; k++){
+                            list += '<span class="iconfont icon-xingxing"></span>'
+                        }
+                    }
+                    $("#scList").append(
+                        '<div class="dingdan-list collect-wrap">' +
+                        '<div class="chef-pic-box">' +
+                        '<img src="'+ bigpic +'" style="display: block">' +
+                        '<div class="chef-outside">' +
+                        '<div class="mui-row">' +
+                        '<div class="mui-col-xs-4">' +
+                        '<div class="favorite-chef-pic">' +
+                        '<img src="'+ head_img +'"></div>' +
+                        '</div>' +
+                        '<div class="mui-col-xs-8 fs13-mxr chef-special-txt">' +
+                        '<span>擅长：'+ goodat +'</span>' +
+                        '</div></div>' +
+                        '<div class="mui-row lin-height26"><div class="mui-col-xs-4 mui-text-center"><span class="fs15-mxr">'+ chefName +'</span></div><div class="mui-col-xs-8 fs13-mxr"><span class="chef-score">好评：'+ list +'</span> </div> </div> </div> </div> </div>'
+
+                    );
+
+                }
+            },
+            error:function(xhr,type,errorThrown) {
+
+                console.log(type);
+            }
+        });
+
+		// 收藏的公司
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost/wzs-api/s/api',
+            data:{accessToken: '',version: '',deviceType: '3', requestCode: '70000',user_id:27,'page.currentPage':1,'page.showCount':10, type:1},
+            dataType:'json',
+            timeout:10000,
+            success:function(data){
+                console.log(data);
+                var orginfo = data.objects;
+                for(var i = 0 ; i < orginfo.length ; i++){
+                    var org_name = orginfo[i].org_name;
+                    var goodat = orginfo[i].good_at_cook;
+                    var address = orginfo[i].address;
+                    var brief_introduction = orginfo[i].brief_introduction;
+                    var orgpic = orginfo[i].group_photo_path;
+
+                    $("#sc_org").append(
+						'<div class="dingdan-list collect-wrap"><div class="mui-row collect-com-wrap"><div class="mui-col-xs-5"><div class="canting-pic"><img src="'+ orgpic +'"></div></div>'+
+                        '<div class="mui-col-xs-7"><p class="com-title-font">'+ org_name +'</p><span class="com-info-font over-hidden opcity06">'+ brief_introduction +'</span></div></div>'+
+                    	'<div class="com-location over-hidden"><span class="iconfont icon-location fs15-mxr location-icon-color"></span><span class="opcity06">'+ address +'</span></div></div>'
+
+                    );
+
+                }
+            },
+            error:function(xhr,type,errorThrown) {
+
+                console.log(type);
+            }
+        });
+
+        var  H = $(window).height()-$('.mui-bar-footer').height()-40;
+        $(".mxr-swiper-wrapper").css({'height': H + 'px'});
+
+        var collectSwiper = new Swiper('.mxr-swiper-container-collect',{
+            pagination: '.my-pagination-ul',
+			paginationClickable :true,
+            paginationBulletRender: function (swiper, index, className) {
+                switch (index) {
+                    case 0: name='收藏的厨师';break;
+                    case 1: name='收藏的公司';break;
+                    default: name='';
+                }
+                return '<li class="' + className + ' mySwiper-title-bg">' + name + '</li>';
+            }
+        });
+
+
+
+	})
+
+/*
+
+     $('#picked').bind('input propertychange', function() {
+         alert("yes")
+
+     })*/
+</script>
+</body>
+
+</html>

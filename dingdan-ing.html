@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>订单详情</title>
+	<meta name="description" content="">
+	<meta name="author" content="吾掌勺">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<meta name="apple-mobile-web-app-title" content="吾掌勺">
+	<link rel="stylesheet" href="css/allcss.css">
+	<link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" href="css/swiper.min.css">
+</head>
+
+<body class="myBody body-bg">
+    <section class="dingdan-wrap">
+        <div class="mui-text-right" id="tuiDan">
+            <a class="tuidanBtn">退单</a>
+        </div>
+        <div class="dingdan-list">
+          <div class="dingdan-list-title mui-clearfix">
+              <div class="mui-pull-left opcity06"><span id="chefName">夏大厨</span>&nbsp;&nbsp;(共<i id="totalDish">4</i>道菜)</div>
+              <div class="mui-pull-right "><span id="chefPhone">18256046499</span></div>
+          </div>
+          <div class="dingdan-use-time mui-clearfix">
+              <div class="mui-pull-left opcity06">用餐时间</div>
+              <div class="mui-pull-right "><span id="dish-use-time">2017-02-21  09:23:00</span></div>
+          </div>
+          <div class="dingdan-list-content" id="dish-list-info">
+             <!-- <div class="mui-row">
+                  <div class="mui-col-xs-7 mui-text-left">美味蛋包饭</div>
+                  <div class="mui-col-xs-2 mui-text-right">X<i>1</i></div>
+                  <div class="mui-col-xs-3 mui-text-right">&yen;<i>50</i></div>
+              </div>
+              <div class="mui-row">
+                  <div class="mui-col-xs-7 mui-text-left">板栗红烧肉</div>
+                  <div class="mui-col-xs-2 mui-text-right">X<i>1</i></div>
+                  <div class="mui-col-xs-3 mui-text-right">&yen;<i>30</i></div>
+              </div>
+              <div class="mui-row">
+                  <div class="mui-col-xs-7 mui-text-left">白灼时蔬</div>
+                  <div class="mui-col-xs-2 mui-text-right">X<i>1</i></div>
+                  <div class="mui-col-xs-3 mui-text-right">&yen;<i>30</i></div>
+              </div>
+              <div class="mui-row">
+                  <div class="mui-col-xs-7 mui-text-left">巴蜀毛血旺</div>
+                  <div class="mui-col-xs-2 mui-text-right">X<i>1</i></div>
+                  <div class="mui-col-xs-3 mui-text-right">&yen;<i>50</i></div>
+              </div>
+
+              <div class="taocan-list">
+                  <div>美味蛋包饭</div>
+                  <div>板栗红烧肉</div>
+                  <div>巴蜀毛血旺</div>
+                  <div>白灼时蔬</div>
+                  <div>麻婆豆腐</div>
+              </div>
+              <div class="personal-order-more mui-text-right"><span id="pom-icon" class="mui-icon mui-icon-arrowdown"></span></div>-->
+          </div>
+          <div class="dingdan-clean_room mui-clearfix">
+             <div class="mui-pull-left opcity06">请阿姨上门清理厨房</div>
+             <div class="mui-pull-right ">&yen;<span id="clean_RMB">320</span></div>
+          </div>
+          <div class="dingdan-list-bottom">
+              <div class="mui-row line-height28">
+                  <div class="mui-col-xs-6 mui-text-left opcity06">共计</div>
+                  <div class="mui-col-xs-6 mui-text-right">&yen;<span class="rmb" id="RMB">320</span></div>
+              </div>
+          </div>
+        </div>
+        <div class="dingdan-list">
+              <div class="mui-row customer-info">
+                  <div class="mui-col-xs-6 mui-text-left opcity06">预订人</div>
+                  <div class="mui-col-xs-6 mui-text-right"><span id="booker">张先生</span></div>
+              </div>
+              <div class="mui-row customer-info">
+                  <div class="mui-col-xs-6 mui-text-left opcity06">手机号</div>
+                  <div class="mui-col-xs-6 mui-text-right"><span id="bookerPhone">18899999999</span></div>
+              </div>
+              <div class="mui-row customer-info">
+                  <div class="mui-col-xs-3 mui-text-left opcity06">用餐地址</div>
+                  <div class="mui-col-xs-9 mui-text-right over-hidden"><span id="restaurantAddress">上海张江碧波港170号7号楼5层</span></div>
+              </div>
+              <div class="mui-row customer-info">
+                  <div class="mui-col-xs-3 mui-text-left opcity06">备注</div>
+                  <div class="mui-col-xs-9 mui-text-right over-hidden"><span id="note">有小孩希望不要太辣，多点葱</span></div>
+              </div>
+              <div class="mui-row customer-info">
+                  <div class="mui-col-xs-6 mui-text-left opcity06">下单时间</div>
+                  <div class="mui-col-xs-6 mui-text-right"><span id="dish-book-time">2017-02-21  09:23</span></div>
+              </div>
+              <div class="mui-row customer-info">
+                  <div class="mui-col-xs-6 mui-text-left opcity06">订单状态</div>
+                  <div class="mui-col-xs-6 mui-text-right"><span id="orderState">正在进行</span></div>
+              </div>
+          </div>
+    </section>
+    <div class="evaluate-btn" id="footer-btn">
+        <a id="evaluate-btn">确认评价</a>
+    </div>
+
+<script src="js/lib/require.js" data-main="js/app/main"></script>
+<script src="js/lib/zepto.min.js"></script>
+<script src="js/app/dingdan-ing.js"></script>
+</body>
+</html>

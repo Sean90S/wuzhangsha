@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>吾掌勺</title>
+    <meta name="description" content="">
+    <meta name="author" content="吾掌勺">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-title" content="吾掌勺">
+    <link rel="stylesheet" href="css/allcss.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/star-rating.css">
+    <!-- Favicons -->
+    <style>
+        .typesOf .active {
+            background: #303133;
+            border-right: 1px solid #000000;
+        }
+
+        .content .overall-content .types-of {
+            position: relative;
+        }
+
+        .content .overall-content .types-of .Switch-menu {
+            top: -1px;
+            height: 100%;
+            padding-bottom: 2.048rem;
+        }
+
+        .content .overall-content .types-of .Switch-menu .foods-wrapper .horizontal-list li {
+            border-right: 1px solid #222;
+        }
+
+        .content .overall-content .types-of .Switch-menu .foods-wrapper .horizontal-list li .Integrated .list-img {
+            width: 4.26666667rem;
+            height: 2.98666667rem;
+        }
+
+        .mui-dtpicker {
+            width: 94.6%;
+            margin-left: .42rem;
+            background: #fff;
+            margin-bottom: 2.3654rem;
+            border-radius: .5rem;
+        }
+
+        .mui-dtpicker-title {
+            display: none;
+        }
+
+        .mui-dtpicker-header {
+            position: fixed;
+            width: 100%;
+            bottom: -2.35rem;
+            background: #fff;
+            border-radius: .5rem;
+        }
+
+        [data-type="datetime"] [data-id="picker-y"] {
+            display: none;
+        }
+
+        [data-type="datetime"] .mui-picker, [data-type="time"] .mui-dtpicker-title h5 {
+            width: 10%;
+            background: #fff;
+        }
+
+        [data-type="datetime"] [data-id="picker-m"] {
+            margin-left: 3rem;
+        }
+
+        [data-type="datetime"] [data-id="picker-h"] {
+            margin-left: 3rem;
+        }
+
+        [data-type="datetime"] [data-id="picker-h"], [data-type="datetime"] [data-id="title-h"] {
+            border: none;
+        }
+
+        .mui-pciker-rule-ft {
+            border: none;
+            color: #0076FF !important;
+        }
+
+        /* 确定按钮 */
+        input[type='submit'], .mui-btn-primary, .mui-btn-blue {
+            width: 100%;
+            background: #fff;
+            border: none;
+            color: #000;
+            font-size: .85rem!important;
+            letter-spacing: 10px;
+        }
+
+        [data-type="datetime"] [data-id="btn-cancel"], [data-type="datetime"] [data-id="title-h"] {
+            display: none;
+        }
+        .refueling-banquet .private-custom li{
+            margin: 0 auto 1.36533333rem;
+        }
+        .refueling-banquet .private-custom{
+            padding-bottom: 0;
+        }
+
+        .mui-content {
+            background: none;
+        }
+
+        .mui-table-view {
+            background: none;
+        }
+
+        .mui-table-view:before {
+            background: none;
+        }
+
+        .mui-bar~.mui-content .mui-fullscreen {
+            top: 44px;
+            height: auto;
+        }
+        .mui-pull-top-tips {
+            position: absolute;
+            top: 290px;
+            left: 50%;
+            margin-left: -25px;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            z-index: 1;
+        }
+        .mui-bar~.mui-pull-top-tips {
+            top: 24px;
+        }
+        .mui-pull-top-wrapper {
+            width: 42px;
+            height: 42px;
+            display: block;
+            text-align: center;
+            background-color: #efeff4;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            background-clip: padding-box;
+            box-shadow: 0 4px 10px #bbb;
+            overflow: hidden;
+        }
+        .mui-pull-top-tips.mui-transitioning {
+            -webkit-transition-duration: 200ms;
+            transition-duration: 200ms;
+        }
+        .mui-pull-top-tips .mui-pull-loading {
+            /*-webkit-backface-visibility: hidden;
+            -webkit-transition-duration: 400ms;
+            transition-duration: 400ms;*/
+
+            margin: 0;
+        }
+        .mui-pull-top-wrapper .mui-icon,
+        .mui-pull-top-wrapper .mui-spinner {
+            margin-top: 7px;
+        }
+        .mui-pull-top-wrapper .mui-icon.mui-reverse {
+            /*-webkit-transform: rotate(180deg) translateZ(0);*/
+        }
+        .mui-pull-bottom-tips {
+            text-align: center;
+            background-color: #efeff4;
+            font-size: 15px;
+            line-height: 40px;
+            color: #777;
+        }
+        .mui-pull-top-canvas {
+            overflow: hidden;
+            background-color: #fafafa;
+            border-radius: 40px;
+            box-shadow: 0 4px 10px #bbb;
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+        }
+        .mui-pull-top-canvas canvas {
+            width: 40px;
+        }
+        .mui-slider-indicator.mui-segmented-control {
+            background-color: #efeff4;
+        }
+
+        .mui-pull-bottom-tips {
+            background: rgba(254,254,254,.1);
+        }
+
+        .content .overall-content .tab {
+            background: #202123 !important;
+        }
+
+        #bg-ying {
+            width: 78%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+        }
+
+        #icon-trans {
+            position: absolute;
+
+        }
+
+        #scroll1{
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .Evaluation-name .name {
+            position: relative;
+        }
+
+        .name-star {
+            position: absolute;
+            left: 3.6rem;
+            top: 0rem;
+        }
+
+        .name .time{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+<!--header-->
+<div id="bg-ying"></div>
+<div class="header header-content">
+    <div class="swiper-container">
+        <div class="swiper-wrapper"></div>
+        <div class="swiper-pagination"></div>
+
+        <div class="swiper-scrollbar"></div>
+    </div>
+
+    <div class="avatar">
+        <img id="avatar-tou" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2609553881,3298543509&fm=117&gp=0.jpg" alt="">
+    </div>
+</div>
+<div class="content">
+    <div class="personal-information"></div>
+    <div class="overall-content mui-content" id="muiBar">
+        <div id="" class="mui-slider">
+            <div id="sliderSegmentedControl"
+                 class="tab mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+                <!--<a class="mui-control-item tab-menu active swiper-slide" href="#item1mobile">
+                    大厨菜谱
+                </a>-->
+                <div class="tab-menu active swiper-slide">
+                    大厨菜谱 <br/>
+                    <!--<span class="post"></span>-->
+                </div>
+
+                <!--  <a class="mui-control-item tab-menu swiper-slide" href="#item1mobile">
+                      用户评价
+                  </a>-->
+                <div class="tab-Evaluation swiper-slide">
+                    用户评价
+                    <span></span>
+                </div>
+            </div>
+            <div class="mui-slider-group"></div>
+            <div class="types-of">
+                <!-- 大厨菜谱 -->
+                <div id="greens" class="Switch-menu Switch-menu-host">
+                    <div class="menu-wrapper" id="wrapper">
+                        <ul class="typesOf"></ul>
+                    </div>
+
+                    <div class="foods-wrapper"> <!--  id="foodList" -->
+                        <ul id="scroll-height">
+                            <li class="food-list food-list-dd" id="food-list-dd">
+                                <div class="empicon-box"><img src="image/ligin/empicon_box.png" alt=""></div>
+                                <ul class="food-list-hook"></ul>
+                                <!--<ul class="horizontal-list clearfix"></ul>-->
+                                <div class="mui-content">
+                                    <div id="slider" class="mui-slider mui-fullscreen">
+                                        <div class="mui-slider-group">
+                                            <div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+                                                <div id="scroll1" class="mui-scroll-wrapper">
+                                                    <div class="mui-scroll">
+                                                        <div class="private-custom">
+                                                            <ul class="private-custom-host  mui-table-view horizontal-list clearfix"></ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- 购物车 -->
+                        <div class="shopcart" style="color: #fff" id="shopCart">
+                            <div class="content">
+                                <div class="shopcart-content-left">
+                                    <div class="logo-wrapper" id="logo-wrapper">
+                                        <div class="desc">
+                                        <span class="logo" id="logo-host">
+                                            <img src="image/ligin/gouwuche.png" alt="">
+                                        </span>
+                                            <span class="Quantity" id="cardNum">0</span>
+                                        </div>
+                                        <div class="price"><span id="cardPrice">0</span><span class="reb">元</span></div>
+                                    </div>
+                                </div>
+                                <div class="orders">200元起接单</div>
+                                <div class="shopcart-content-right">预定</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="selected-menu">
+                        <ul class="selected">
+                            <li class="selected-menu-name">
+                                <div class="menu">已选菜单</div>
+                                <div class="empty-cart">清空购物车</div>
+                            </li>
+                            <li>
+                                <ul id="cardList"></ul>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <!-- 用户评价 -->
+
+                <!-- <div class="mui-content">
+                     <div class="mui-slider mui-fullscreen">
+                         <div class="mui-slider-group">
+                             <div class="mui-slider-item mui-control-content mui-active">
+                                 <div class="mui-scroll-wrapper">
+                                         <div class="private-custom">
+                                             <ul class="private-custom-host  mui-table-view">
+                                                 <div id="userRating">
+                                                     <div class="Switch-Evaluation Switch-menu-host scroll">
+                                                         <div class="switch-list">
+                                                             <div class="Evaluation-name">
+                                                                 <div class="name-image"><img src="image/ligin/tianjia.png" alt=""></div>
+                                                                 <div class="name">
+                                                                     <span class="username">唐笑笑</span> <span class="username-xian"></span> <br />
+                                                                     <span class="time">评价时间 : 刚刚</span>
+                                                                 </div>
+                                                                 <div class="name-star">
+                                                                     <ul class="show_number clearfix">
+                                                                         <li class="clearfix">
+                                                                             <div class="atar_Show">
+                                                                                 <p tip="1" class="Tip-hook"></p>
+                                                                             </div>
+                                                                             <span></span>
+                                                                         </li>
+                                                                     </ul>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="Evaluation-image">
+                                                                 <ul class="food-photos">
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                 </ul>
+                                                             </div>
+                                                             <div class="Evaluation-language">
+                                                                 <span>夏大厨做的菜很adfasdfasfdasdfasd棒，老板们都挺喜欢吃的。</span>
+                                                             </div>
+                                                         </div>
+                                                         <div class="switch-list">
+                                                             <div class="Evaluation-name">
+                                                                 <div class="name-image"><img src="image/ligin/tianjia.png" alt=""></div>
+                                                                 <div class="name">
+                                                                     <span class="username">唐笑笑</span> <span class="username-xian"></span> <br />
+                                                                     <span class="time">评价时间 : 刚刚</span>
+                                                                 </div>
+                                                                 <div class="name-star">
+                                                                     <ul class="show_number clearfix">
+                                                                         <li class="clearfix">
+                                                                             <div class="atar_Show">
+                                                                                 <p tip="1" class="Tip-hook"></p>
+                                                                             </div>
+                                                                             <span></span>
+                                                                         </li>
+                                                                     </ul>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="Evaluation-image">
+                                                                 <ul class="food-photos">
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                 </ul>
+                                                             </div>
+                                                             <div class="Evaluation-language">
+                                                                 <span>夏大厨做的菜很adfasdfasfdasdfasd棒，老板们都挺喜欢吃的。</span>
+                                                             </div>
+                                                         </div>
+                                                         <div class="switch-list">
+                                                             <div class="Evaluation-name">
+                                                                 <div class="name-image"><img src="image/ligin/tianjia.png" alt=""></div>
+                                                                 <div class="name">
+                                                                     <span class="username">唐笑笑</span> <span class="username-xian"></span> <br />
+                                                                     <span class="time">评价时间 : 刚刚</span>
+                                                                 </div>
+                                                                 <div class="name-star">
+                                                                     <ul class="show_number clearfix">
+                                                                         <li class="clearfix">
+                                                                             <div class="atar_Show">
+                                                                                 <p tip="1" class="Tip-hook"></p>
+                                                                             </div>
+                                                                             <span></span>
+                                                                         </li>
+                                                                     </ul>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="Evaluation-image">
+                                                                 <ul class="food-photos">
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                 </ul>
+                                                             </div>
+                                                             <div class="Evaluation-language">
+                                                                 <span>夏大厨做的菜很adfasdfasfdasdfasd棒，老板们都挺喜欢吃的。</span>
+                                                             </div>
+                                                         </div>
+                                                         <div class="switch-list">
+                                                             <div class="Evaluation-name">
+                                                                 <div class="name-image"><img src="image/ligin/tianjia.png" alt=""></div>
+                                                                 <div class="name">
+                                                                     <span class="username">唐笑笑</span> <span class="username-xian"></span> <br />
+                                                                     <span class="time">评价时间 : 刚刚</span>
+                                                                 </div>
+                                                                 <div class="name-star">
+                                                                     <ul class="show_number clearfix">
+                                                                         <li class="clearfix">
+                                                                             <div class="atar_Show">
+                                                                                 <p tip="1" class="Tip-hook"></p>
+                                                                             </div>
+                                                                             <span></span>
+                                                                         </li>
+                                                                     </ul>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="Evaluation-image">
+                                                                 <ul class="food-photos">
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                 </ul>
+                                                             </div>
+                                                             <div class="Evaluation-language">
+                                                                 <span>夏大厨做的菜很adfasdfasfdasdfasd棒，老板们都挺喜欢吃的。</span>
+                                                             </div>
+                                                         </div>
+                                                         <div class="switch-list">
+                                                             <div class="Evaluation-name">
+                                                                 <div class="name-image"><img src="image/ligin/tianjia.png" alt=""></div>
+                                                                 <div class="name">
+                                                                     <span class="username">唐笑笑</span> <span class="username-xian"></span> <br />
+                                                                     <span class="time">评价时间 : 刚刚</span>
+                                                                 </div>
+                                                                 <div class="name-star">
+                                                                     <ul class="show_number clearfix">
+                                                                         <li class="clearfix">
+                                                                             <div class="atar_Show">
+                                                                                 <p tip="1" class="Tip-hook"></p>
+                                                                             </div>
+                                                                             <span></span>
+                                                                         </li>
+                                                                     </ul>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="Evaluation-image">
+                                                                 <ul class="food-photos">
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                 </ul>
+                                                             </div>
+                                                             <div class="Evaluation-language">
+                                                                 <span>夏大厨做的菜很adfasdfasfdasdfasd棒，老板们都挺喜欢吃的。</span>
+                                                             </div>
+                                                         </div>
+                                                         <div class="switch-list">
+                                                             <div class="Evaluation-name">
+                                                                 <div class="name-image"><img src="image/ligin/tianjia.png" alt=""></div>
+                                                                 <div class="name">
+                                                                     <span class="username">唐笑笑</span> <span class="username-xian"></span> <br />
+                                                                     <span class="time">评价时间 : 刚刚</span>
+                                                                 </div>
+                                                                 <div class="name-star">
+                                                                     <ul class="show_number clearfix">
+                                                                         <li class="clearfix">
+                                                                             <div class="atar_Show">
+                                                                                 <p tip="1" class="Tip-hook"></p>
+                                                                             </div>
+                                                                             <span></span>
+                                                                         </li>
+                                                                     </ul>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="Evaluation-image">
+                                                                 <ul class="food-photos">
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                 </ul>
+                                                             </div>
+                                                             <div class="Evaluation-language">
+                                                                 <span>夏大厨做的菜很adfasdfasfdasdfasd棒，老板们都挺喜欢吃的。</span>
+                                                             </div>
+                                                         </div>
+                                                         <div class="switch-list">
+                                                             <div class="Evaluation-name">
+                                                                 <div class="name-image"><img src="image/ligin/tianjia.png" alt=""></div>
+                                                                 <div class="name">
+                                                                     <span class="username">唐笑笑</span> <span class="username-xian"></span> <br />
+                                                                     <span class="time">评价时间 : 刚刚</span>
+                                                                 </div>
+                                                                 <div class="name-star">
+                                                                     <ul class="show_number clearfix">
+                                                                         <li class="clearfix">
+                                                                             <div class="atar_Show">
+                                                                                 <p tip="1" class="Tip-hook"></p>
+                                                                             </div>
+                                                                             <span></span>
+                                                                         </li>
+                                                                     </ul>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="Evaluation-image">
+                                                                 <ul class="food-photos">
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                 </ul>
+                                                             </div>
+                                                             <div class="Evaluation-language">
+                                                                 <span>夏大厨做的菜很adfasdfasfdasdfasd棒，老板们都挺喜欢吃的。</span>
+                                                             </div>
+                                                         </div>
+                                                         <div class="switch-list">
+                                                             <div class="Evaluation-name">
+                                                                 <div class="name-image"><img src="image/ligin/tianjia.png" alt=""></div>
+                                                                 <div class="name">
+                                                                     <span class="username">唐笑笑</span> <span class="username-xian"></span> <br />
+                                                                     <span class="time">评价时间 : 刚刚</span>
+                                                                 </div>
+                                                                 <div class="name-star">
+                                                                     <ul class="show_number clearfix">
+                                                                         <li class="clearfix">
+                                                                             <div class="atar_Show">
+                                                                                 <p tip="1" class="Tip-hook"></p>
+                                                                             </div>
+                                                                             <span></span>
+                                                                         </li>
+                                                                     </ul>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="Evaluation-image">
+                                                                 <ul class="food-photos">
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                     <li><img src="image/ligin/qqqq.jpg" alt=""></li>
+                                                                 </ul>
+                                                             </div>
+                                                             <div class="Evaluation-language">
+                                                                 <span>夏大厨做的菜很adfasdfasfdasdfasd棒，老板们都挺喜欢吃的。</span>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+                                                 </div>
+                                             </ul>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>-->
+                 <div id="userRating">
+                     <div class="Switch-Evaluation Switch-menu-host scroll" id="Switch-Evaluation"></div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/lib/require.js" data-main="js/app/main"></script>
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/lib/mui.min.js"></script>
+<script src="js/lib/starScore.js"></script>
+<script src="js/lib/swiper.min.js"></script>
+<script src="js/lib/iscroll-lite.js"></script>
+<script src="js/lib/mui.pullToRefresh.js"></script>
+<script src="js/lib/mui.pullToRefresh.material.js"></script>
+<script src="js/pageJs/chefDetails-chefRecipe.js"></script>
+<script type="text/javascript" src="//demo.lanrenzhijia.com/2014/rotate0410/js/jquery.rotate.min.js"></script>
+
+<script>
+    $(function () {
+        (function () {
+            $('.tab div').on('click', function () {
+                $(this).addClass('active').siblings().removeClass('active');
+                var index = $(this).index();
+                $('.types-of .Switch-menu-host').css({'display':'none','transition':'2s'});
+                $('.types-of .Switch-menu-host:eq(' + index + ')').css({'display':'block','transition':'2s'});
+            })
+        })();
+    });
+
+    setRem();
+    window.addEventListener("orientationchange", setRem);
+    window.addEventListener("resize", setRem);
+    function setRem() {
+        var html = document.querySelector("html");
+        var width = html.getBoundingClientRect().width;
+        html.style.fontSize = width / 16 + "px";
+    }
+
+</script>
+</body>
+
+</html>
+
+
+

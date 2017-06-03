@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>订单</title>
+	<meta name="description" content="">
+	<meta name="author" content="吾掌勺">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<meta name="apple-mobile-web-app-title" content="吾掌勺">
+	<link rel="stylesheet" href="css/allcss.css">
+	<link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" href="css/swiper.min.css">
+    <style>
+
+    </style>
+</head>
+
+<body class="myBody">
+	<!--footer-->
+	<div class="mui-bar mui-bar-footer mui-bar-bg">
+		<div class="mui-row mui-text-center">
+
+			<div class="mui-col-xs-3 foot-list">
+				<a href="index.html" id="">
+					<i class="iconfont icon-zhuye"></i>
+					<p class="foot-text">首页</p>
+				</a>
+			</div>
+
+			<div class="mui-col-xs-3 foot-list active-page">
+				<a href="#" class="" id="dingdanPage">
+                    <i class="iconfont icon-dingdan"></i>
+                    <p class="foot-text">订单</p>
+				</a>
+			</div>
+
+			<div class="mui-col-xs-3 foot-list">
+				<a href="myFavorite.html">
+                    <i class="iconfont icon-shoucang"></i>
+                    <p class="foot-text">收藏</p>
+				</a>
+			</div>
+
+			<div class="mui-col-xs-3 foot-list">
+				<a href="personalCenter.html">
+                    <i class="iconfont icon-foot04 message"></i>
+                    <p class="foot-text">我的</p>
+				</a>
+			</div>
+
+		</div>
+	</div>
+	<!--footer end-->
+	<!-- content-->
+	<div class="mui-content mui-content-bg">
+	<div class="swiper-container mxr-swiper">
+		<div class="my-pagination">
+			<ul class="my-pagination-ul">
+                <li class="swiper-pagination-bullet mySwiper-title-bg swiper-pagination-bullet-active">全部订单</li>
+                <li class="swiper-pagination-bullet mySwiper-title-bg">待评价</li>
+            </ul>
+		</div>
+		<div class="swiper-wrapper mxr-swiper-wrapper">
+
+			<!--全部订单-->
+			<div class="swiper-slide mxr-swiper-slide">
+				<section class="dingdan-wrap">
+					<div id="allOrder" class=" mui-scroll-wrapper" >
+						<div class="mui-scroll">
+							<div class="mui-table-view"></div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<!--待评价订单-->
+			<div class="swiper-slide mxr-swiper-slide">
+				<section class="dingdan-wrap">
+					<div id="noCommentOrder">
+
+					</div>
+
+				</section>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script src="js/lib/require.js" data-main="js/app/main"></script>
+<script src="js/lib/zepto.min.js"></script>
+<script src="js/lib/mui.min.js"></script>
+<script type="text/javascript">
+    var URL = "http://localhost/wzs-api/s/api";
+    var totalPage;
+    var counter=1;//计数器
+    var Flag=true;
+
+(function(){
+
+    orderLoad();
+    noCommentOrder();
+    //跳转到订单详情
+    $('.dingdan-info-link').live('tap', function(){
+        var orderid = $(this).attr('id');
+        var ordertype = $(this).attr('type');
+        $(this).attr('href','dingdan-ing.html?id='+orderid+"&type="+ordertype)
+
+    })
+
+    //退单按钮
+    $('.dingdan-btn-tuidan ,.tuidanBtn').live('tap',function() {
+        var orderCode = $(this).attr('code');
+        var orderState = $(this).attr('state');
+        var btnArray = ['取消', '确认'];
+        mui.confirm('用餐前两个小时退款40%\n用餐两个小时内退款30%', '退单须知', btnArray, function(e) {
+            if (e.index == 1) {
+
+                mui.ajax("http://localhost/wzs-api/s/api",
+                    {
+                        data:{'accessToken': '', 'version': '','deviceType': '3','requestCode': '50003','order_code':'"+orderCode+"','state':'"+state+"'},
+                        type:'POST',
+                        dataType:'json',
+                        timeout:10000,//超时时间设置为10秒；
+                        success:function(data)
+                        {
+                            console.log(data);
+
+                            if(data.message == "SUCCESS")
+
+                            {
+                                mui.openWindow({
+                                    url: 'tuidan-success.html'
+                                });
+                            }else
+
+                            {
+                                mui.alert("申请失败");
+                            }
+                        },
+                        error:function(xhr,type,errorThrown)
+                        {
+                            //异常处理；
+                            mui.alert(type);
+                            console.log(type);
+                        }
+                    });
+
+            }
+        })
+    });
+
+    // 评价按钮
+    $('.dingdan-btn-weipingjia').live('tap', function() {
+        var chef = $(this).attr('chef');
+        var customer = $(this).attr('customer');
+        var code = $(this).attr('orederCode');
+
+        mui.openWindow({
+            url: 'dingdan-comment.html?chef='+chef+"&customer="+customer+"&orederCode="+code
+        });
+
+    });
+
+
+	//上拉加载下拉刷新
+	mui.init({
+		pullRefresh: {
+			container: '#allOrder',
+			up: {
+				contentrefresh: '正在加载...',
+				callback: function(){
+                    counter++;
+				    pullupRefresh();
+                }
+			}
+		}
+	});
+
+    /**
+     * 上拉加载具体业务实现
+     */
+    function pullupRefresh() {
+        setTimeout(function () {
+            fresh();
+			  mui('#allOrder').pullRefresh().endPullupToRefresh((Flag)); //参数为true代表没有更多数据了。
+        }, 1500);
+    }
+
+})();
+    function orderLoad() {
+
+        $.post(URL, { accessToken: " ", version: " ",deviceType: "3",requestCode: "50001",member_id: 7,res_type: 0,showCount: 10,currentPag:1, state:"0"}, function (data) {
+            console.log(data);
+
+            totalPage = data.page.totalPage;
+
+            console.log("totalPage="+totalPage,"counter="+counter);
+
+				var orderInfo = data.objects;
+                var chefId,caidanNum,dingdanState,dinnerTime,totalPrice,remark,caidanList,dingdanId,dingdanType,memberId,orederCode;
+                var result = "";
+                for(var i = 0 ; i < orderInfo.length ; i++){
+                    dingdanId = orderInfo[i].id;
+                    dingdanType = orderInfo[i].order_type;
+                    chefId = orderInfo[i].cook_id;
+                    memberId = orderInfo[i].member_id;
+                    orederCode = orderInfo[i].order_code; // 订单编号
+                    caidanNum = orderInfo[i].orderDetailList.length;
+                    dingdanState = orderInfo[i].state;
+                    dinnerTime = orderInfo[i].dinner_time;
+                    totalPrice = orderInfo[i].total_price;
+                    remark = orderInfo[i].remark; if(!remark) remark = "暂无数据";
+                    caidanList = orderInfo[i].orderDetailList;
+
+
+                    var list = "";
+                    for(var j = 0 ; j < caidanList.length; j++){
+                        var detailInfo = caidanList[j];
+                        if (!detailInfo) continue;
+
+                        list += "<div class='mui-row'>"+
+                            "<div class='mui-col-xs-6 mui-text-left'>" + detailInfo.name + "</div>"+
+                            "<div class='mui-col-xs-6 mui-text-right'>X<i>"+ detailInfo.number + "</i></div>"+
+                            "</div>"
+                    }
+
+                    var btn = "";
+                    var switchState = dingdanState;
+                    switch (dingdanState){
+                        case (0):
+                            dingdanState = "待支付";
+                            btn = "<div class='mui-text-right'><a class='dingdan-btn dingdan-btn-gotopay'>去支付</a><a class='dingdan-btn dingdan-btn-cancel'>取消</a></div>";
+                            break;
+                        case (-1):
+                            dingdanState = "取消订单";
+                            break;
+                        case (1):
+                            dingdanState = "支付中";
+                            break;
+                        case (2 || 3):
+                            dingdanState = "正在进行中";
+                            btn = "<div class='mui-text-right'><a class='dingdan-btn dingdan-btn-tuidan' state=\""+switchState+"\" code=\""+orederCode+"\">退单</a></div>";
+                            break;
+                        case (4):
+                            dingdanState = "交易完成";
+                            btn = "<div class='mui-text-right'><a class='dingdan-btn dingdan-btn-weipingjia' chef=\""+chefId+"\" customer=\""+memberId+"\" orederCode=\""+orederCode+"\">评价</a></div>";
+                            break;
+                        case (5):
+                            dingdanState = "已评价";
+                            break;
+                        case (6):
+                            dingdanState = "申请退款中";
+                            break;
+                        case (7):
+                            dingdanState = "退款成功";
+                            break;
+                        case (8):
+                            dingdanState = "退款失败";
+                            break;
+                    }
+
+
+
+                    result += "<div class= 'dingdan-list'>" +
+                        "<div class='dingdan-list-title'>" +
+                        "<a href='#' class=' mui-clearfix'>" +
+                        "<a href='#' class=' mui-clearfix'>" +
+                        "<div class='mui-pull-left opcity06'>"+ chefId + "&nbsp;&nbsp;(共<i>" + caidanNum + "</i>道菜)</div>" +
+                        "<div class='mui-pull-right '><span class='text-ing-finish-color marginr10'>" +dingdanState + "</span><span class='icon-vertical opcity06 mui-icon mui-icon-arrowright'></span></div>"+
+                        "</a>" +
+                        "</div>" +
+                        "<div class='dingdan-list-content'><a href='#' class='dingdan-info-link' id = \""+ dingdanId +"\" type=\""+ dingdanType +"\">"+ list + "</a></div>" +
+                        "<div class='dingdan-list-bottom'>" +
+                        "<div class='mui-row line-height28'>" +
+                        "<div class='mui-col-xs-3 mui-text-left opcity06'>用餐时间:</div>" +
+                        "<div class='mui-col-xs-6 mui-text-left opcity06'>" + dinnerTime + "</div>" +
+                        "<div class='mui-col-xs-3 mui-text-right'>&yen;<span class='rmb'>" + totalPrice + "</span></div>" +
+                        "</div>" +
+                        "<div class='mui-row opcity06'>"+
+                        "<div class='mui-col-xs-3 mui-text-left'>备注详情:</div>" +
+                        "<div class='mui-col-xs-9 mui-text-left'>" + remark + "</div>" +
+                        "</div>" + btn +
+                        "</div>"+
+                        "</div>"
+
+
+                }
+
+            $(result).insertBefore('#allOrder .mui-scroll .mui-table-view');
+        })
+    }
+
+/*    function orderLoad() {
+
+        $.post(URL, { accessToken: " ", version: " ",deviceType: "3",requestCode: "50001",member_id: 7,res_type: 0,showCount: 10,currentPag:counter, state:"0"}, function (data) {
+            console.log(data);
+            var orderInfo = data.objects;
+
+
+            totalPage = data.page.totalPage;
+            console.log("totalPage="+totalPage,"counter="+counter);
+
+            if(totalPage > counter){
+                Flag = false;
+
+			}else {
+                Flag = true;
+                var chefId,caidanNum,dingdanState,dinnerTime,totalPrice,remark,caidanList,dingdanId,dingdanType,memberId,orederCode;
+                var result = "";
+                for(var i = 0 ; i < orderInfo.length ; i++){
+                    dingdanId = orderInfo[i].id;
+                    dingdanType = orderInfo[i].order_type;
+                    chefId = orderInfo[i].cook_id;
+                    memberId = orderInfo[i].member_id;
+                    orederCode = orderInfo[i].order_code; // 订单编号
+                    caidanNum = orderInfo[i].orderDetailList.length;
+                    dingdanState = orderInfo[i].state;
+                    dinnerTime = orderInfo[i].dinner_time;
+                    totalPrice = orderInfo[i].total_price;
+                    remark = orderInfo[i].remark; if(!remark) remark = "暂无数据";
+                    caidanList = orderInfo[i].orderDetailList;
+
+
+                    var list = "";
+                    for(var j = 0 ; j < caidanList.length; j++){
+                        var detailInfo = caidanList[j];
+                        if (!detailInfo) continue;
+
+                        list += "<div class='mui-row'>"+
+                            "<div class='mui-col-xs-6 mui-text-left'>" + detailInfo.name + "</div>"+
+                            "<div class='mui-col-xs-6 mui-text-right'>X<i>"+ detailInfo.number + "</i></div>"+
+                            "</div>"
+                    }
+
+                    var btn = "";
+                    var switchState = dingdanState;
+                    switch (dingdanState){
+                        case (0):
+                            dingdanState = "待支付";
+                            btn = "<div class='mui-text-right'><a class='dingdan-btn dingdan-btn-gotopay'>去支付</a><a class='dingdan-btn dingdan-btn-cancel'>取消</a></div>";
+                            break;
+                        case (-1):
+                            dingdanState = "取消订单";
+                            break;
+                        case (1):
+                            dingdanState = "支付中";
+                            break;
+                        case (2 || 3):
+                            dingdanState = "正在进行中";
+                            btn = "<div class='mui-text-right'><a class='dingdan-btn dingdan-btn-tuidan' state=\""+switchState+"\" code=\""+orederCode+"\">退单</a></div>";
+                            break;
+                        case (4):
+                            dingdanState = "交易完成";
+                            btn = "<div class='mui-text-right'><a class='dingdan-btn dingdan-btn-weipingjia' chef=\""+chefId+"\" customer=\""+memberId+"\" orederCode=\""+orederCode+"\">评价</a></div>";
+                            break;
+                        case (5):
+                            dingdanState = "已评价";
+                            break;
+                        case (6):
+                            dingdanState = "申请退款中";
+                            break;
+                        case (7):
+                            dingdanState = "退款成功";
+                            break;
+                        case (8):
+                            dingdanState = "退款失败";
+                            break;
+                    }
+
+
+
+                    result += "<div class= 'dingdan-list'>" +
+                        "<div class='dingdan-list-title'>" +
+                        "<a href='#' class=' mui-clearfix'>" +
+                        "<a href='#' class=' mui-clearfix'>" +
+                        "<div class='mui-pull-left opcity06'>"+ chefId + "&nbsp;&nbsp;(共<i>" + caidanNum + "</i>道菜)</div>" +
+                        "<div class='mui-pull-right '><span class='text-ing-finish-color marginr10'>" +dingdanState + "</span><span class='icon-vertical opcity06 mui-icon mui-icon-arrowright'></span></div>"+
+                        "</a>" +
+                        "</div>" +
+                        "<div class='dingdan-list-content'><a href='#' class='dingdan-info-link' id = \""+ dingdanId +"\" type=\""+ dingdanType +"\">"+ list + "</a></div>" +
+                        "<div class='dingdan-list-bottom'>" +
+                        "<div class='mui-row line-height28'>" +
+                        "<div class='mui-col-xs-3 mui-text-left opcity06'>用餐时间:</div>" +
+                        "<div class='mui-col-xs-6 mui-text-left opcity06'>" + dinnerTime + "</div>" +
+                        "<div class='mui-col-xs-3 mui-text-right'>&yen;<span class='rmb'>" + totalPrice + "</span></div>" +
+                        "</div>" +
+                        "<div class='mui-row opcity06'>"+
+                        "<div class='mui-col-xs-3 mui-text-left'>备注详情:</div>" +
+                        "<div class='mui-col-xs-9 mui-text-left'>" + remark + "</div>" +
+                        "</div>" + btn +
+                        "</div>"+
+                        "</div>"
+
+                    $(result).insertBefore('#allOrder .mui-scroll .mui-table-view');
+                }
+			}
+
+
+        })
+    }*/
+    function fresh() {
+
+            if(totalPage > counter-1){
+
+                Flag = false;
+                console.log("当前页是："+counter);
+
+                $.post(URL, {
+                    accessToken: " ",
+                    version: " ",
+                    deviceType: "3",
+                    requestCode: "50001",
+                    member_id: 7,
+                    res_type: 0,
+                    showCount: 10,
+                    currentPag:counter,
+                    state:"0"
+                }, function (data) {
+                    console.log(data);
+                    var orderInfo = data.objects;
+
+                    var chefId, caidanNum, dingdanState, dinnerTime, totalPrice, remark, caidanList, dingdanId,
+                        dingdanType, memberId, orederCode;
+                    var result2 = "";
+                    for (var i = 0; i < orderInfo.length; i++) {
+                        dingdanId = orderInfo[i].id;
+                        dingdanType = orderInfo[i].order_type;
+                        chefId = orderInfo[i].cook_id;
+                        memberId = orderInfo[i].member_id;
+                        orederCode = orderInfo[i].order_code; // 订单编号
+                        caidanNum = orderInfo[i].orderDetailList.length;
+                        dingdanState = orderInfo[i].state;
+                        dinnerTime = orderInfo[i].dinner_time;
+                        totalPrice = orderInfo[i].total_price;
+                        remark = orderInfo[i].remark;
+                        if (!remark) remark = "暂无数据";
+                        caidanList = orderInfo[i].orderDetailList;
+
+
+                        var list = "";
+                        for (var j = 0; j < caidanList.length; j++) {
+                            var detailInfo = caidanList[j];
+                            if (!detailInfo) continue;
+
+                            list += "<div class='mui-row'>" +
+                                "<div class='mui-col-xs-6 mui-text-left'>" + detailInfo.name + "</div>" +
+                                "<div class='mui-col-xs-6 mui-text-right'>X<i>" + detailInfo.number + "</i></div>" +
+                                "</div>"
+                        }
+
+                        var btn = "";
+                        var switchState = dingdanState;
+                        switch (dingdanState) {
+                            case (0):
+                                dingdanState = "待支付";
+                                btn = "<div class='mui-text-right'><a class='dingdan-btn dingdan-btn-gotopay'>去支付</a><a class='dingdan-btn dingdan-btn-cancel'>取消</a></div>";
+                                break;
+                            case (-1):
+                                dingdanState = "取消订单";
+                                break;
+                            case (1):
+                                dingdanState = "支付中";
+                                break;
+                            case (2 || 3):
+                                dingdanState = "正在进行中";
+                                btn = "<div class='mui-text-right'><a class='dingdan-btn dingdan-btn-tuidan' state=\"" + switchState + "\" code=\"" + orederCode + "\">退单</a></div>";
+                                break;
+                            case (4):
+                                dingdanState = "交易完成";
+                                btn = "<div class='mui-text-right'><a class='dingdan-btn dingdan-btn-weipingjia' chef=\"" + chefId + "\" customer=\"" + memberId + "\" orederCode=\"" + orederCode + "\">评价</a></div>";
+                                break;
+                            case (5):
+                                dingdanState = "已评价";
+                                break;
+                            case (6):
+                                dingdanState = "申请退款中";
+                                break;
+                            case (7):
+                                dingdanState = "退款成功";
+                                break;
+                            case (8):
+                                dingdanState = "退款失败";
+                                break;
+                        }
+
+                        result2 += "<div class= 'dingdan-list'>" +
+                            "<div class='dingdan-list-title'>" +
+                            "<a href='#' class=' mui-clearfix'>" +
+                            "<a href='#' class=' mui-clearfix'>" +
+                            "<div class='mui-pull-left opcity06'>" + chefId + "&nbsp;&nbsp;(共<i>" + caidanNum + "</i>道菜)</div>" +
+                            "<div class='mui-pull-right '><span class='text-ing-finish-color marginr10'>" + dingdanState + "</span><span class='icon-vertical opcity06 mui-icon mui-icon-arrowright'></span></div>" +
+                            "</a>" +
+                            "</div>" +
+                            "<div class='dingdan-list-content'><a href='#' class='dingdan-info-link' id = \"" + dingdanId + "\" type=\"" + dingdanType + "\">" + list + "</a></div>" +
+                            "<div class='dingdan-list-bottom'>" +
+                            "<div class='mui-row line-height28'>" +
+                            "<div class='mui-col-xs-3 mui-text-left opcity06'>用餐时间:</div>" +
+                            "<div class='mui-col-xs-6 mui-text-left opcity06'>" + dinnerTime + "</div>" +
+                            "<div class='mui-col-xs-3 mui-text-right'>&yen;<span class='rmb'>" + totalPrice + "</span></div>" +
+                            "</div>" +
+                            "<div class='mui-row opcity06'>" +
+                            "<div class='mui-col-xs-3 mui-text-left'>备注详情:</div>" +
+                            "<div class='mui-col-xs-9 mui-text-left'>" + remark + "</div>" +
+                            "</div>" + btn +
+                            "</div>" +
+                            "</div>"
+                    }
+                    $(result2).insertBefore('#allOrder .mui-scroll .mui-table-view');
+                })
+            }else {
+                Flag = true;
+                console.log("没有加载数据")
+                console.log("当前页是："+counter);
+            }
+
+
+
+    }
+    function noCommentOrder() {
+
+        $.post(URL, { accessToken: " ", version: " ",deviceType: "3",requestCode: "50001",member_id: 27,res_type: 0,showCount: 10,currentPag:1, state:"1"}, function (data) {
+            console.log(data);
+            var orderInfo = data.objects;
+            var chefId,caidanNum,dingdanState,dinnerTime,totalPrice,remark,caidanList,dingdanId,memberId,orederCode;
+            if(orderInfo){
+                for(var i = 0 ; i < orderInfo.length ; i++){
+
+                    dingdanId = orderInfo[i].id;
+                    chefId = orderInfo[i].cook_id;
+                    memberId = orderInfo[i].member_id;
+                    orederCode = orderInfo[i].order_code;
+                    caidanNum = orderInfo[i].orderDetailList.length;
+                    dingdanState = "交易完成";
+                    dinnerTime = orderInfo[i].dinner_time;
+                    totalPrice = orderInfo[i].total_price;
+                    remark = orderInfo[i].remark; if(!remark) remark = "暂无数据";
+                    caidanList = orderInfo[i].orderDetailList;
+
+                    var list = "";
+                    for(var j = 0 ; j < caidanList.length; j++){
+                        var detailInfo = caidanList[j];
+                        if (!detailInfo) continue;
+
+                        list += "<div class='mui-row'>"+
+                            "<div class='mui-col-xs-6 mui-text-left'>" + detailInfo.name + "</div>"+
+                            "<div class='mui-col-xs-6 mui-text-right'>X<i>"+ detailInfo.number + "</i></div>"+
+                            "</div>"
+                    }
+
+                    $("#noCommentOrder").append(
+                        "<div class= 'dingdan-list'>" +
+                        "<div class='dingdan-list-title'>" +
+                        "<a href='#' class=' mui-clearfix'>" +
+                        "<a href='#' class=' mui-clearfix'>" +
+                        "<div class='mui-pull-left opcity06'>"+ chefId + "&nbsp;&nbsp;(共<i>" + caidanNum + "</i>道菜)</div>" +
+                        "<div class='mui-pull-right '><span class='text-ing-finish-color marginr10'>" +dingdanState + "</span><span class='icon-vertical opcity06 mui-icon mui-icon-arrowright'></span></div>"+
+                        "</a>" +
+                        "</div>" +
+                        "<div class='dingdan-list-content'><a href='#' id = \""+ dingdanId +"\">"+ list + "</a></div>" +
+                        "<div class='dingdan-list-bottom'>" +
+                        "<div class='mui-row line-height28'>" +
+                        "<div class='mui-col-xs-3 mui-text-left opcity06'>用餐时间:</div>" +
+                        "<div class='mui-col-xs-6 mui-text-left opcity06'>" + dinnerTime + "</div>" +
+                        "<div class='mui-col-xs-3 mui-text-right'>&yen;<span class='rmb'>" + totalPrice + "</span></div>" +
+                        "</div>" +
+                        "<div class='mui-row opcity06'>"+
+                        "<div class='mui-col-xs-3 mui-text-left'>备注详情:</div>" +
+                        "<div class='mui-col-xs-9 mui-text-left'>" + remark + "</div>" +
+                        "</div>" +
+                        "<div class='mui-text-right'><a class='dingdan-btn dingdan-btn-weipingjia' chef=\""+chefId+"\" customer=\""+memberId+"\" orderId=\""+dingdanId+"\">评价</a></div>" +
+                        "</div>"+
+                        "</div>"
+                    );
+                }
+            }
+
+        })
+    }
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+	<meta name="Author" content="吾掌勺">
+	<meta name="Description" content="">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="吾掌勺">
+	<link rel="stylesheet" href="css/allcss.css">
+	<link rel="stylesheet" href="css/mui.min.css">
+
+	<title>个人中心</title>
+    <style>
+        .user-head-img{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 1px solid #EF2432;
+        }
+        .user-head-img img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+</head>
+<body class="wzs-body">
+    <div class="wzs-personal-center-wrap">
+        <div class="wzs-personal-center-head"></div>
+        <h4 class="wzs-personal-center-title">
+            <div class="user-head-img">
+                <img id="user-head-img" src="images/personal-center-title-bg.png" />
+            </div>
+
+            <p class="title-name" id="userName">小食客</p>
+            <span class="title-tel" id="userPhone">1381234567</span>
+        </h4>
+        <div class="wzs-personal-center-body">
+            <div class="personal-body-top-line"></div>
+            <ul class="personal-content-wrap">
+                <li class="personal-content-list personal-center-address">
+                    <a href="addressIndex.html">
+                        <p class="personal-content-info">我的地址</p>
+                    </a>
+                </li>
+                <li class="personal-content-list personal-center-wallet">
+                    <a href="./walletIndex.html">
+                        <p class="personal-content-info">我的钱包</p>
+                    </a>
+                </li>
+                <li class="personal-content-list personal-center-comment">
+                    <a href="./myComment.html">
+                        <p class="personal-content-info">我的评论</p>
+                    </a>
+                </li>
+                <li class="personal-content-list personal-center-news">
+                    <a href="./news.html">
+                        <p class="personal-content-info">我的消息</p>
+                        <span class="news-num" id="newNews">4444</span>
+                    </a>
+                </li>
+                <li class="personal-content-list personal-center-about-us">
+                    <a href="./aboutUs.html">
+                        <p class="personal-content-info">关于我们</p>
+                    </a>
+                </li>
+                <li class="personal-content-list personal-center-sign-out">
+                    <p class="personal-content-info info-sign-out">退出登录</p>
+                </li>
+            </ul>
+            <div class="personal-body-bottom-line"></div>
+        </div>
+    </div>
+
+
+    <!--<script src="js/lib/require.js" data-main="js/app/main"></script>-->
+    <script src="js/lib/zepto.min.js"></script>
+    <script src="js/lib/mui.min.js"></script>
+<script>
+    $(function () {
+
+         //  查询用户信息
+        mui.ajax("http://localhost/wzs-api/s/api",
+            {
+                data:{accessToken: '', version: '',deviceType: '3',requestCode: '10003',id:"7",type:"0"},
+                type:'POST',
+                dataType:'json',
+                timeout:10000,//超时时间设置为10秒；
+                success:function(data) {
+                    console.log(data);
+                    var userInfo = data.wzsMember;
+                    var userName = userInfo.name;
+                    var userPhone = userInfo.phone;
+                    var userHeadImg = userInfo.head_img_path;
+                    $('#userName').text(userName);
+                    $('#userPhone').text(userPhone);
+                    if(userHeadImg){
+                        $('#user-head-img').attr('src',userHeadImg);
+                    }
+                },
+                error:function(xhr,type,errorThrown)
+                {
+                    //异常处理；
+                    mui.alert("请求失败！");
+                    console.log(type);
+                }
+            });
+
+        //  查询未读消息数
+        mui.ajax("http://localhost/wzs-api/s/api",
+            {
+                data:{accessToken: '', version: '',deviceType: '3',requestCode: '97002',id:"7",receive_member_id:"7"},
+                type:'POST',
+                dataType:'json',
+                timeout:10000,//超时时间设置为10秒；
+                success:function(data){
+                    console.log(data);
+                    var count = data.objects.count;
+                    if(count == 0){
+                        $('#newNews').hide();
+                    }else {
+                        $('#newNews').text(count);
+                    }
+                },
+                error:function(xhr,type,errorThrown){
+                    console.log(type);
+                }
+            });
+    })
+
+</script>
+</body>
+</html>

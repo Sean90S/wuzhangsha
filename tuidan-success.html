@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>退单成功</title>
+	<meta name="description" content="">
+	<meta name="author" content="吾掌勺">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<meta name="apple-mobile-web-app-title" content="吾掌勺">
+	<link rel="stylesheet" href="css/allcss.css">
+	<link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" href="css/swiper.min.css">
+</head>
+
+<body class="myBody body-bg">
+	<div class="dingdan-wrap tuidan-wrap-bottom">
+		<div class="dingdan-list">
+			<div class="tuidan-success-wrap">
+				<div class="tuidan-success-circle">
+					<div class="circle-center"></div>
+				</div>
+			</div>
+			<div class="tuidan-text mui-text-center">
+				<p>申请成功</p>
+			</div>
+		</div>
+
+	</div>
+	<footer class="tuidan-foot">
+		<a class="tuidan-foot-btn" type="button" id="td-sure-btn">确认</a>
+	</footer>
+<!--<script src="js/lib/require.js" data-main="js/app/main"></script>-->
+<script src="js/lib/zepto.min.js" ></script>
+
+<script>
+	$(function () {
+        $('#td-sure-btn').on('click',function () {
+            window.location.href = 'dingdan.html'
+        })
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,372 @@
+.package-details {
+  width: 100%;
+  padding-bottom: 140/@rem;
+  // 公司简介
+  .details-Introduction {
+    position: relative;
+    width: 100%;
+    //height: 544/@rem;
+    //background: red;
+
+    .line {
+      width: 100%;
+      position: absolute;
+      bottom: -0.29rem;
+      z-index: 100;
+      img {
+        width: 100%;
+      }
+    }
+
+    .Introduction-image {
+      width: 100%;
+      height: 400/@rem;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+  }
+  .Introduction-company {
+    position: absolute;
+    top: -5rem;
+    left: 66/@rem;
+    width: 82.7%;
+    height: 192/@rem;
+    opacity: 0.94;
+    background: #2B2D31;
+    text-align: center;
+    font-size: 24/@rem;
+    color: #ccc;
+    z-index: 1000;
+    .company {
+      padding-top: 28/@rem;
+      padding-bottom: 20/@rem;
+      font-size: 32/@rem;
+      color: #fff;
+    }
+
+    .companyTeam-Introduction {
+      opacity: 0.8;
+      font-size: 12px;
+      color: #FFFFFF;
+      line-height: 18px;
+      .ellipses {
+        display: inline-block;
+        width: 7.328rem;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+  // 滑块不同套餐
+  .details-swiper-package {
+    width: 100%;
+    //margin-top: 40/@rem;
+    .swiper-service-container {
+      width: 90%;
+      height: 25.266667rem;
+      //margin-top: 200/@rem;
+
+      // 把圆点变成方点
+      .swiper-pagination-bullet {
+        transform: rotate(45deg);
+        background: #FFFFFF;
+        border-radius: 0;
+      }
+      .swiper-pagination-bullet-active {
+        background: #EF2432
+      }
+
+      .swiper-slide-image {
+        width: 100%;
+        .ligin-image {
+          width: 92.7%;
+          height: 648/@rem;
+          transform: translate3d(.56rem, 0px, 0px);
+          font-size:0;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+
+          .name-price {
+            width: 100%;
+            height: 238/@rem;
+            background: #fff;
+            border-radius: 0 0 10/@rem 10/@rem;
+            font-size: 24/@rem;
+            color: #000000;
+            text-align: center;
+            .title {
+              padding-top: 40/@rem;
+              padding-bottom: 16/@rem;
+              font-size: 52/@rem;
+            }
+
+            .memo-name {
+              opacity: 0.69;
+              font-family: PingFangSC-Light;
+              font-size: 24/@rem;
+              color: #000000;
+              letter-spacing: 0px;
+              line-height: 36/@rem;
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+  // 套餐菜单
+  .details-package-menu {
+    margin: 10/@rem auto 0;
+    padding-bottom: 48/@rem;
+    width: 82.7%;
+    background: rgba(255,255,255,0.06);
+
+    .menu-blackdot {
+      width: 90%;
+      margin: auto;
+      padding-top: 32/@rem;
+      img {
+        width: 100%;
+      }
+
+      /*.blackdot {
+        display: inline-block;
+        .blackdot-xian {
+          display: inline-block;
+          width: 169.2/@rem;
+          height: 1px;
+          background: #ccc;
+          opacity: 0.5;
+          vertical-align: middle;
+        }
+
+        @media screen and (width: 320px) {
+        .blackdot-xian {
+          display: inline-block;
+          width: 3.5rem;
+          height: 1px;
+          background: #ccc;
+          opacity: 0.5;
+          vertical-align: middle;
+        }
+      }
+
+        .icon-square {
+          display: inline-block;
+          width: 8/@rem;
+          height: 8/@rem;
+          background: #fff;
+          transform: rotate(45deg);
+          vertical-align: middle;
+        }
+        .left-git {
+          font-size: .234rem;
+          vertical-align: middle;
+          color: #ccc;
+          opacity: 0.5;
+          position: relative;
+          //top: .px;
+        }
+      }*/
+
+      .package-menu {
+        display: inline-block;
+        width: 3.19rem;
+        text-align: center;
+        font-size: 32/@rem;
+        color: #FFFFFF;
+        vertical-align: middle;
+      }
+
+    }
+
+    .menu-cuisine {
+      width: 90%;
+      display: flex;
+      text-align: left;
+      font-size: 24/@rem;
+      //margin: auto;
+      .cuisine-xian {
+        width: 1px;
+        background: #ccc;
+        margin-top: 60/@rem;
+      }
+      .cuisine-left {
+        flex: 1;
+        line-height: 1.3rem;
+        color: #ccc;
+        padding-left: 2rem;
+        h3{
+          //margin-left: -45/@rem;
+          font-size: 30/@rem;
+          color: #fff;
+          position: relative;
+          .square {
+            position: absolute;
+            left: -0.866667rem;
+            top: -.1rem;
+            width: 14.4/@rem;
+            height: 14.4/@rem;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+
+        .itemLi {
+          padding-top: 60/@rem;
+        }
+      }
+
+      .cuisine-right {
+        flex: 1;
+        line-height: 1.3rem;
+        color: #ccc;
+        padding-left: 2rem;
+        h3{
+          //margin-left: -45/@rem;
+          font-size: 30/@rem;
+          color: #fff;
+          position: relative;
+          .square {
+            position: absolute;
+            top: -.1rem;
+            left: -0.866667rem;
+            width: 14.4/@rem;
+            height: 14.4/@rem;
+            img{
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+
+        ul {
+          //padding-top: 60/@rem;
+        }
+      }
+    }
+
+  }
+
+  // 菜品展示
+  .details-swiper-menu {
+    width: 90%;
+    height: 345/@rem;
+    margin: auto;
+
+    .swiper-pagination {
+      //margin-left: 230/@rem;
+      text-align: right;
+    }
+
+    .swiper-pagination-bullet {
+      border-radius: 0;
+      width: 24/@rem;
+      height: 24/@rem;
+      line-height: 24/@rem;
+      background: rgba(0,0,0,0.9);
+      font-size: 16/@rem;
+      color: #ccc!important;
+      opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #EF2432!important;
+      color: #fff!important;
+    }
+    .swiper-container {
+      width: 100%;
+      height: 345/@rem;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 15/@rem;
+      }
+    }
+  }
+
+  // 预定
+  .details-booked {
+    width: 100%;
+    height: 100/@rem;
+    position: fixed;
+    bottom: 0;
+    z-index: 200;
+    background: #303133;
+    //font-size: 0;
+    overflow: hidden;
+    .desktop {
+      float: left;
+      font-size: 24/@rem;
+      color: #fff;
+      width: 90/@rem;
+      height: 100/@rem;
+      line-height: 100/@rem;
+      text-align: center;
+    }
+
+    .booked-number {
+      float: left;
+      display: flex;
+      width: 180/@rem;
+      height: 56/@rem;
+      border-radius: 30/@rem;
+      border: 1px solid #888;
+      margin-top: 22/@rem;
+      //line-height: 56/@rem;
+      .jian,.jia {
+        line-height: 56/@rem;
+      }
+
+      .number {
+        border-left: 1px  solid #888;
+        border-right: 1px  solid #888;
+        margin-top: 14/@rem;
+        font-size: 24/@rem;
+        color: #fff;
+      }
+      div {
+        height: 28/@rem;
+        color: red;
+        flex: 1;
+        text-align: center;
+      }
+
+    }
+
+    .booked-money {
+      width: 151.4/@rem;
+      line-height: 56/@rem;
+      margin-top: 22/@rem;
+      margin-right: 36/@rem;
+      //background: blue;
+      float: right;
+      text-align: right;
+      font-size: 40/@rem;
+      color: #fff;
+      border-left: 1px solid #888;
+      .reb {
+        font-size: 20/@rem;
+      }
+    }
+
+    .yuding {
+      float: right;
+      width: 200/@rem;
+      line-height: 100/@rem;
+      background: red;
+      color: #fff;
+      font-size: 36/@rem;
+      text-align: center;
+    }
+  }
+}

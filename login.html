@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>吾掌勺</title>
+    <meta name="description" content="">
+    <meta name="author" content="吾掌勺">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-title" content="吾掌勺">
+    <link rel="stylesheet" href="css/allcss.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+
+<body>
+<!--header-->
+<div class="login">
+    <div class="logo">
+        <div class="avatar"></div>
+        <div class="name">吾掌勺</div>
+    </div>
+    <div class="form">
+        <form action="">
+            <div class="phoneNumber">
+                <span class="iconfont icon-shouji">&#xe61d;</span>
+                <input id="phone" type="text" placeholder="请输入手机号" value="17087791692">
+            </div>
+            <div class="phone-verification phone-verification-host"></div>
+            <div class="phoneNumber Verification">
+                <span class="iconfont icon-shouji">&#xe67a;</span>
+                <input class="Enter-confirmation-code" id="code" type="text" value="" placeholder="请输入验证码">
+                <input class="btn-Transparent btn-Transparent-host" type="button" value="发送">
+            </div>
+            <div class="phone-verification verification-code-host"></div>
+
+            <div class="phone-verification agre-agreement-host"></div>
+            <input class="login-ID login-ID-host" type="button" value="登 录">
+            <div class="protocol protocol-host">
+                <div class="bg bg-host"></div>
+                <input type="checkbox" class="filled-in" id="female"/>
+                <label class="labelFor">已阅读并同意 <span>《吾掌勺用户协议》</span></label>
+            </div>
+        </form>
+
+    </div>
+</div>
+<!--end header-->
+
+<!-- 页脚 -->
+<script src="js/lib/require.js" data-main="js/app/main"></script>
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/pageJs/login.js"></script>
+<script>
+    setRem();
+    window.addEventListener("orientationchange", setRem);
+    window.addEventListener("resize", setRem);
+    function setRem() {
+        var html = document.querySelector("html");
+        var width = html.getBoundingClientRect().width;
+        html.style.fontSize = width / 16 + "px";
+    }
+</script>
+<!-- 页脚end -->
+</body>
+
+</html>

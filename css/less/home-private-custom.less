@@ -1,0 +1,152 @@
+.clearfix::after {
+  display: block;
+  content: '';
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+
+
+@font-face {
+  font-family: 'iconfont';  /* project id 306320 */
+  src: url('//at.alicdn.com/t/font_8hfix5wr2l2z9f6r.eot');
+  src: url('//at.alicdn.com/t/font_8hfix5wr2l2z9f6r.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_8hfix5wr2l2z9f6r.woff') format('woff'),
+  url('//at.alicdn.com/t/font_8hfix5wr2l2z9f6r.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_8hfix5wr2l2z9f6r.svg#iconfont') format('svg');
+}
+
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.refueling-banquet {
+
+  height: 100%;
+  .private-custom {
+    width: 100%;
+    position: relative;
+    padding-top: 5.1rem;
+    padding-bottom: 72/@rem;
+
+    li:first-child{
+      margin-top: 0;
+    }
+
+    li {
+      margin: 64/@rem auto 0;
+      width: 90%;
+      height: 480/@rem;
+      background: rgba(255, 255, 255, 0.06);
+      position: relative;
+      a {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+      }
+      .private-image {
+        width: 90%;
+        height: 7.889rem;
+        position: absolute;
+        left: 36/@rem;
+        top: -36/@rem;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 10/@rem;
+        }
+      }
+
+      .private-name {
+        position: absolute;
+        bottom: 22/@rem;
+        left: 88/@rem;
+        font-size: 30/@rem;
+        color: #fff;
+        .avatar {
+          width: 120/@rem;
+          height: 120/@rem;
+          position: relative;
+          top: -0.84rem;
+          border: 2px solid #EF2432;
+          border-radius: 50%;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+          }
+        }
+
+        .mangluzhong{
+          width: 40/@rem;
+          height: 40/@rem;
+          position: absolute;
+          top: .8rem;
+          left: 2rem;
+          .xiuxizhong {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .name {
+          text-align: center;
+          position: relative;
+          top: -.15rem;
+        }
+      }
+
+      .private-evaluation {
+        position: absolute;
+        top: 396/@rem;
+        left: 278/@rem;
+        font-size: 26/@rem;
+        color: #fff;
+
+        .goodAt {
+          position: relative;
+          top: -24/@rem;
+          width: 7.266667rem;
+          overflow: hidden;
+          text-overflow:ellipsis;
+          white-space: nowrap;
+        }
+
+
+
+        .show_number {
+          font-size: 26/@rem;
+          .atar_Show {
+            //display: inline-block;
+            background: url("../image/ligin/stark2.png");
+            background-size: 23px;
+            width: 112px;
+            height: 15px;
+            position: relative;
+            top: -.1rem;
+            left: -.6rem;
+            float: left;
+          }
+
+          .atar_Show p {
+            background: url("../image/ligin/stars2.png") ;
+            background-size: 23px;
+            left: 0;
+            height: 15px;
+            width: 112px;
+          }
+
+          .show_number li span {
+            display: inline-block;
+            line-height: 42/@rem;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,194 @@
+@rem: 46.875rem;
+
+html, body{
+  width: 100%;
+  height: 100%;
+  background: #202123!important;
+}
+
+// 手机
+@font-face {
+  font-family: 'iconfont';  /* project id 296646 */
+  src: url('//at.alicdn.com/t/font_3n9qyknpr3yds4i.eot');
+  src: url('//at.alicdn.com/t/font_3n9qyknpr3yds4i.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_3n9qyknpr3yds4i.woff') format('woff'),
+  url('//at.alicdn.com/t/font_3n9qyknpr3yds4i.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_3n9qyknpr3yds4i.svg#iconfont') format('svg');
+}
+
+// 验证码
+@font-face {
+  font-family: 'iconfont';  /* project id 296646 */
+  src: url('//at.alicdn.com/t/font_x83tejli5nlv7vi.eot');
+  src: url('//at.alicdn.com/t/font_x83tejli5nlv7vi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_x83tejli5nlv7vi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_x83tejli5nlv7vi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_x83tejli5nlv7vi.svg#iconfont') format('svg');
+}
+
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.login {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background: url("../image/ligin/bg.png") no-repeat  center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+  .logo {
+    width: 100%;
+    text-align: center;
+
+    .avatar {
+      margin: auto;
+      width: 140/@rem;
+      height: 140/@rem;
+      background: #F3F3F3;;
+      border-radius: 32/@rem;
+      position: relative;
+      top: 260/@rem;
+    }
+
+    .name {
+      //line-height: 13rem;
+      padding-top: 6.2rem;
+      font-size: 32/@rem;
+    }
+
+  }
+
+  .form {
+    margin:140/@rem auto;
+    width: 70%;
+
+    .phone-verification {
+      color: #EF2432;
+      font-size: 24/@rem;
+      margin-top: -20/@rem;
+      padding-left: 43/@rem;
+    }
+
+    .phoneNumber{
+      height: 2rem;
+      margin-top: 20/@rem;
+
+      .icon-shouji {
+        vertical-align: middle;
+        font-size: 33/@rem;
+        color: #A6A6A6;
+      }
+
+      input{
+        font-size: 30/@rem;
+        height: 50%;
+        width: 90%;
+        background: none;
+        border-bottom: 1px solid rgba(255,255,255,0.60);
+        color: #fff;
+        outline: none;
+        vertical-align: middle;
+      }
+    }
+    .Verification {
+      position: relative;
+      .btn-Transparent {
+        position: absolute;
+        right: 10/@rem;
+        bottom: .7rem;
+        display: inline-block;
+        width: 120/@rem;
+        height: 52/@rem;
+        //line-height: 60/@rem;
+        border: 1px solid rgba(255,255,255,0.60);
+        font-size: 26/@rem;
+        text-align: center;
+        color: #fff;
+      }
+
+      .Enter-confirmation-code {
+        padding-top: 20/@rem;
+      }
+
+      @media screen and (width: 414px) {
+        .btn-Transparent {
+          line-height: 52/@rem;
+        }
+      }
+
+    }
+
+
+    .agre-agreement-host {
+      //margin-top: 200/@rem;
+      padding-left: 3.906667rem;
+      line-height: 50/@rem;
+      position: absolute;
+      top:20rem;
+      //text-align: center;
+    }
+
+    .login-ID {
+      width: 100%;
+      height: 80/@rem;
+      background: #EF2432;
+      border: none;
+      border-radius: 200/@rem;
+      font-size: 38/@rem;
+      color: #FFFFFF;
+      font-family: PingFangSC-Regular;
+      margin-top: 200/@rem;
+      outline: none;
+    }
+
+    .protocol {
+      width: 80%;
+      margin: 10/@rem auto;
+      //background: url("../image/ligin/dagou.png") no-repeat 0 .3rem;
+      position: relative;
+      .bg {
+        width: .7rem;
+        height: .7rem;
+        background: url("../image/ligin/dagou.png") no-repeat 0 0;
+        position: absolute;
+        top: .3rem;
+        display: none;
+        //opacity: 0;
+        //z-index: 200;
+      }
+
+      input[type=checkbox] {
+        width: .6rem;
+        height: .6rem;
+        vertical-align: middle;
+        padding-top: .3rem;
+        outline: none;
+        background: red;
+      }
+      .labelFor{
+        font-size: 24/@rem;
+        vertical-align: middle;
+        span {
+          color: #EF2432;
+        }
+      }
+    }
+
+    @media screen and (width: 320px) {
+      .protocol {
+        width: 90%;
+        margin: 10/@rem auto;
+      }
+    }
+
+    ::-webkit-input-placeholder{
+      font-size: 25/@rem;
+    }
+  }
+}

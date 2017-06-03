@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>私人定制</title>
+    <meta name="description" content="">
+    <meta name="author" content="吾掌勺">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-title" content="吾掌勺">
+    <link rel="stylesheet" href="css/allcss.css">
+    <link rel="stylesheet" href="css/mui.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/lCalendar.css">
+    <link rel="stylesheet" href="css/mui.picker.css">
+    <link rel="stylesheet" href="css/mui.poppicker.css">
+    <link rel="stylesheet" href="css/mui.dtpicker.css">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        .date_yy {
+            display: none;
+        }
+
+        .nianyue {
+            margin-left: -6.07rem;
+            text-align: center;
+        }
+
+        .gear {
+            width: 31%!important;
+            font-size: .7rem;
+        }
+
+        .date_dd {
+            margin-left: 1.6rem;
+        }
+
+        .mui-poppicker, .mui-picker {
+            background: #fff;
+        }
+
+        .mui-poppicker-btn-cancel {
+            display: none;
+        }
+
+
+        .mui-poppicker {
+            width: 94.6%;
+            margin-left: .1rem;
+            background: #fff;
+            margin-bottom: 2.3654rem;
+            border-radius: .5rem;
+        }
+
+        .mui-poppicker-body {
+            border-radius: .5rem;
+        }
+
+        .mui-poppicker-body .mui-picker {
+            border-radius: .5rem;
+        }
+
+        .highlight {
+            color: #0076FF!important;
+        }
+
+        .mui-dtpicker-title {
+            display: none;
+        }
+
+        .mui-poppicker-header {
+            position: fixed;
+            width: 100%;
+            bottom: -2.35rem;
+            background: #fff;
+            border-radius: .5rem;
+        }
+
+        [data-type="datetime"] [data-id="picker-y"]  {
+            display: none;
+        }
+
+        [data-type="datetime"] .mui-picker, [data-type="time"] .mui-dtpicker-title h5 {
+            width: 10%;
+            background: #fff;
+        }
+
+        [data-type="datetime"] [data-id="picker-m"]  {
+            margin-left: 3rem;
+        }
+
+        [data-type="datetime"] [data-id="picker-h"]  {
+            margin-left: 3rem;
+        }
+
+        [data-type="datetime"] [data-id="picker-h"], [data-type="datetime"] [data-id="title-h"] {
+            border: none;
+        }
+
+        .mui-pciker-rule-ft {
+            border: none;
+            color: #0076FF!important;
+        }
+
+        /* 确定按钮 */
+        input[type='submit'], .mui-btn-primary, .mui-btn-blue {
+            width: 100%;
+            background: #fff;
+            border: none;
+            color: #000;
+            font-size: .85rem!important;
+            letter-spacing: 10px;
+        }
+
+        [data-type="datetime"] [data-id="btn-cancel"], [data-type="datetime"] [data-id="title-h"] {
+            display: none;
+        }
+        .refueling-banquet .private-custom li{
+            margin: 0 auto 1.36533333rem;
+        }
+        .refueling-banquet .private-custom{
+            padding-bottom: 0;
+        }
+
+        .mui-content {
+            background: none;
+        }
+
+        .mui-table-view {
+            background: none;
+        }
+
+        .mui-table-view:before {
+             background: none;
+        }
+
+        .mui-bar~.mui-content .mui-fullscreen {
+            top: 44px;
+            height: auto;
+        }
+        .mui-pull-top-tips {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            margin-left: -25px;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            z-index: 1;
+        }
+        .mui-bar~.mui-pull-top-tips {
+            top: 24px;
+        }
+        .mui-pull-top-wrapper {
+            width: 42px;
+            height: 42px;
+            display: block;
+            text-align: center;
+            background-color: #efeff4;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            background-clip: padding-box;
+            box-shadow: 0 4px 10px #bbb;
+            overflow: hidden;
+        }
+        .mui-pull-top-tips.mui-transitioning {
+            -webkit-transition-duration: 200ms;
+            transition-duration: 200ms;
+        }
+        .mui-pull-top-tips .mui-pull-loading {
+            /*-webkit-backface-visibility: hidden;
+            -webkit-transition-duration: 400ms;
+            transition-duration: 400ms;*/
+
+            margin: 0;
+        }
+        .mui-pull-top-wrapper .mui-icon,
+        .mui-pull-top-wrapper .mui-spinner {
+            margin-top: 7px;
+        }
+        .mui-pull-top-wrapper .mui-icon.mui-reverse {
+            /*-webkit-transform: rotate(180deg) translateZ(0);*/
+        }
+        .mui-pull-bottom-tips {
+            text-align: center;
+            background-color: #efeff4;
+            font-size: 15px;
+            line-height: 40px;
+            color: #777;
+        }
+        .mui-pull-top-canvas {
+            overflow: hidden;
+            background-color: #fafafa;
+            border-radius: 40px;
+            box-shadow: 0 4px 10px #bbb;
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+        }
+        .mui-pull-top-canvas canvas {
+            width: 40px;
+        }
+        .mui-slider-indicator.mui-segmented-control {
+            background-color: #efeff4;
+        }
+
+        .mui-pull-bottom-tips {
+            background: rgba(254,254,254,.1);
+        }
+
+        .mui-toast-container{
+            width: 80%;
+            position: fixed;
+            bottom: 4rem!important;
+        }
+
+        /*.mui-toast-container*/
+    </style>
+</head>
+
+<body>
+<!-- 私人定制 -->
+<div class="refueling-banquet" >
+    <div id="refueling-banquet">
+        <!-- 亲爱的用户，我们的厨师都是五星级大厨。请放心选择 -->
+        <div class="refueling-banquet-header"> 亲爱的用户，我们的厨师都是五星级大厨。请放心选择</div>
+        <!-- 时间 -->
+        <div class="refueling-banquet-time">
+            <div class="time" id='refueling-banquet-hoot'><span id="timer">用餐时间</span> <span class="iconfont icon-jiantou">&#xe61a;</span></div>
+        </div>
+    </div>
+    <div class="mui-content">
+        <div id="slider" class="mui-slider mui-fullscreen">
+            <div class="mui-slider-group">
+                <div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+                    <div id="scroll1" class="mui-scroll-wrapper">
+                        <div class="mui-scroll">
+                            <div class="private-custom">
+                                <ul class="private-custom-host  mui-table-view"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/lib/require.js" data-main="js/app/main"></script>
+<script src="js/lib/mui.min.js"></script>
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/lib/mui.picker.js"></script>
+<script src="js/lib/mui.poppicker.js"></script>
+<script src="js/lib/mui.pullToRefresh.js"></script>
+<script src="js/lib/mui.pullToRefresh.material.js"></script>
+<script src="js/pageJs/home-private-custom.js"></script>
+<script>
+    setRem();
+    window.addEventListener("orientationchange", setRem);
+    window.addEventListener("resize", setRem);
+    function setRem() {
+        var html = document.querySelector("html");
+        var width = html.getBoundingClientRect().width;
+        html.style.fontSize = width / 16 + "px";
+    }
+
+</script>
+</body>
+
+</html>

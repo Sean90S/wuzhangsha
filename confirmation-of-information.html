@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>确认信息</title>
+    <meta name="description" content="">
+    <meta name="author" content="吾掌勺">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-title" content="吾掌勺">
+    <link rel="stylesheet" href="css/allcss.css">
+    <!--<link rel="stylesheet" href="css/mui.css">-->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/mui.picker.css">
+    <link rel="stylesheet" href="css/mui.poppicker.css">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+
+        .mui-poppicker {
+            width: 90%;
+            background: #fff;
+            bottom: 2.5rem;
+            left: .75rem;
+            border-radius: .3rem;
+        }
+
+        @media screen and (min-width: 700px) {
+            .mui-poppicker {
+                width: 90%;
+                background: #fff;
+                bottom: 2rem;
+                left: .75rem;
+                border-radius: .3rem;
+            }
+        }
+
+        @media screen and (min-width: 850px) {
+            .mui-poppicker {
+                width: 90%;
+                background: #fff;
+                bottom: 1.8rem;
+                left: .75rem;
+                border-radius: .3rem;
+            }
+        }
+
+        @media screen and (min-width: 1000px) {
+            .mui-poppicker {
+                width: 90%;
+                background: #fff;
+                bottom: 1.5rem;
+                left: .75rem;
+                border-radius: .3rem;
+            }
+        }
+
+        .mui-picker {
+            background: #fff!important;
+            border-radius: .3rem;
+        }
+
+        .mui-poppicker-btn-cancel{
+            display: none;
+        }
+
+        .mui-poppicker-btn-ok {
+            width: 100%;
+            font-size: .85rem!important;
+            letter-spacing: 8px;
+        }
+
+        .mui-poppicker-header {
+            width: 96%;
+            margin: auto;
+            position: absolute;
+            bottom: -2.5rem;
+            background: #fff;
+            border-radius: .3rem;
+
+        }
+
+        @media screen and (min-width: 700px) {
+            .mui-poppicker-header {
+                width: 98%;
+                margin: auto;
+                position: absolute;
+                bottom: -2rem;
+                background: #fff;
+                border-radius: .3rem;
+
+            }
+        }
+
+        @media screen and (min-width: 850px) {
+            .mui-poppicker {
+                width: 90%;
+                background: #fff;
+                bottom: 1.88rem;
+                left: .75rem;
+                border-radius: .3rem;
+            }
+        }
+
+        .mui-poppicker-header button {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #fff;
+        }
+
+        .highlight {
+            color: #0076FF!important;
+        }
+    </style>
+</head>
+
+<body>
+<!--header-->
+<div class="confirmation-of-information">
+    <!-- 客户信息 -->
+    <div class="customer-information">
+        <div id="homeAddress">
+            <span class="iconfont">&#xe642;</span>
+            选择上门地址
+        </div>
+        <div id="address"></div>
+
+        <div class="xiahuanxian"></div>
+        <div class="dining-time">
+            <span class="dining">用餐时间</span>
+            <span class="time"></span>
+        </div>
+    </div>
+     <!-- 支付方式 -->
+    <div class="payment-method">
+        <div class="payment">支付方式 (支付剩余时间 <span id="fifteen-minutes"></span>)</div>
+        <div class="xiahuanxian"></div>
+        <ul class="payment-classification">
+            <li>
+                <span class="pay">微信支付</span>
+                <span class="the-number"><img src="image/ligin/weixuan_small.png" alt=""></span>
+            </li>
+            <li>
+                <span>账户支付 (余额：200元)</span>
+                <span class="the-number"><img src="image/ligin/weixuan_small.png" alt=""></span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 厨师美食 -->
+    <div class="chef-cuisine">
+        <div class="cuisine"></div>
+        <div class="xiahuanxian"></div>
+        <ul class="chef"></ul>
+        <ul class="auntie">
+            <li>
+                <p class="Come-on-door">
+                    <span class="bg-checked" id="bg-checked-hoot"></span>
+                    <span id="weidagou"><input type="checkbox" id="box"></span>
+                    <label>请阿姨上门</label>
+                </p>
+                <p class="chef-reb">¥50</p>
+            </li>
+        </ul>
+        <div class="xiahuanxian"></div>
+        <div class="total">
+            <span class="gongji">共计</span>
+            <span class="yuan">¥<span id="money"></span></span>
+        </div>
+    </div>
+
+    <!-- 人数 -->
+    <div class="number-people">
+        <div class="people">
+            <span class="beizhu">用餐人数</span>
+            <span class="jiantou" id='showCityPicker'>0 <i></i></span>
+        </div>
+        <div class="xiahuanxian"></div>
+        <div class="people">
+            <span class="beizhu">备注</span>
+            <span class="jiantou"> > </span>
+        </div>
+        <div class="xiahuanxian"></div>
+        <div class="description" contenteditable="true"></div>
+    </div>
+
+    <div class="confirm-payment">
+        <button type="button" class="mui-btn mui-btn-danger" style="color: #fff;">确认支付</button>
+    </div>
+
+
+</div>
+<!--end header-->
+
+<!-- 页脚 -->
+<script src="js/lib/require.js" data-main="js/app/main"></script>
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/lib/mui.min.js"></script>
+<script src="js/lib/mui.picker.js"></script>
+<script src="js/lib/mui.poppicker.js"></script>
+<script src="js/lib/picker.js"></script>
+<script src="js/pageJs/confirmation-of-information.js"></script>
+<script>
+    setRem();
+    window.addEventListener("orientationchange", setRem);
+    window.addEventListener("resize", setRem);
+    function setRem() {
+        var html = document.querySelector("html");
+        var width = html.getBoundingClientRect().width;
+        html.style.fontSize = width / 16 + "px";
+    }
+//    mui('#sheet1').popover('toggle');
+</script>
+<!-- 页脚end -->
+</body>
+
+</html>

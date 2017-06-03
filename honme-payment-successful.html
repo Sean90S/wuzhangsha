@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>支付成功</title>
+    <meta name="description" content="">
+    <meta name="author" content="吾掌勺">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-title" content="吾掌勺">
+    <link rel="stylesheet" href="css/allcss.css">
+    <link rel="stylesheet" href="css/mui.css">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+
+<body>
+
+<div class="payment-successful">
+    <div class="success">
+        <div class="Pay-success"><span class="iconfont">&#xe62f;</span></div>
+        <p class="text">支付成功</p>
+        <div class="success-xian">
+            <img src="image/ligin/line01.png" alt="">
+            <!--<span class="iconfont left-git">&#xe63b;</span><span class="zhengfangxing"></span><span class="xian"></span><span class="zhengfangxing"></span><span class="iconfont right-git">&#xe613;</span>-->
+        </div>
+        <div class="payment-method"><span class="font-cl">支付方式：</span> <span class="middle">微信支付</span></div>
+        <div class="payment-method payment-amount"><span class="font-cl">支付金额：</span> <span class="middle">1588.00元</span></div>
+    </div>
+
+    <div class="retnrn-home-page">
+        <a href="">
+            返 回 首 页
+        </a>
+    </div>
+</div>
+<script src="js/lib/require.js" data-main="js/app/main"></script>
+<script src="js/lib/swiper.min.js"></script>
+<script>
+
+    setRem();
+    window.addEventListener("orientationchange", setRem);
+    window.addEventListener("resize", setRem);
+    function setRem() {
+        var html = document.querySelector("html");
+        var width = html.getBoundingClientRect().width;
+        html.style.fontSize = width / 16 + "px";
+    }
+</script>
+</body>
+
+</html>

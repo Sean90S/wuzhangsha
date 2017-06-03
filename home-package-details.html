@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>套餐详情</title>
+    <meta name="description" content="">
+    <meta name="author" content="吾掌勺">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-title" content="吾掌勺">
+    <link rel="stylesheet" href="css/allcss.css">
+    <link rel="stylesheet" href="css/mui.css">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        .swiper-container{
+            overflow-x: hidden;
+        }
+
+        .swiper-overflow {
+            overflow: hidden;
+        }
+
+        .swiper-pagination-bullets .swiper-pagination-bullet {
+            margin: 0 4px!important;
+            text-align: center;
+        }
+
+        .swiper-pagination-bullet .swiper-pagination-bullet-active {
+            text-align: center;
+        }
+
+        .details-swiper-package {
+            position: relative;
+            top: -.8rem;
+        }
+
+        #swiper-wrapper-hoot {
+            margin-top: 5rem;
+        }
+
+        .cuisine-right ul {
+            padding-top: 0!important;
+        }
+
+        .cuisine-right .itemLiRight {
+            padding-top: 1.28rem;
+        }
+    </style>
+</head>
+
+<body>
+<!--header-->
+<div class="package-details">
+    <!-- 公司简介 -->
+    <div class="details-Introduction">
+        <div class="Introduction-image">
+            <img id="introduction-hoot" src="image/ligin/pic@2x.png" alt="">
+        </div>
+        <div class="line"><img src="image/ligin/line02.png" alt=""></div>
+    </div>
+
+    <!-- 滑块不同套餐 -->
+    <div class="details-swiper-package">
+
+        <div class="swiper-container swiper-service-container">
+
+            <div class="swiper-wrapper" id="swiper-wrapper-hoot"></div>
+            <!-- 正方形 -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <!-- 套餐菜单 -->
+    <div class="details-package-menu">
+        <div class="menu-blackdot">
+            <img src="image/ligin/taocancaidan.png" alt="">
+        </div>
+
+        <div class="menu-cuisine">
+            <div class="cuisine cuisine-left">
+                <ul>
+                    <!--<h3 class="dish-name">
+                        <span class="square"><img src="image/ligin/reddot.png" alt=""></span>
+                        <span class="can">两餐</span>
+                    </h3>-->
+
+                    <li class="itemLi">
+                        <!--<h3 class="dish-name">
+                            <span class="square"><img src="image/ligin/reddot.png" alt=""></span>
+                            <span class="can">两餐</span>
+                        </h3>
+                        <ul>
+                            <li>夫妻肺片</li>
+                        </ul>-->
+                    </li>
+                </ul>
+            </div>
+            <div class="cuisine-xian"></div>
+            <div class="cuisine cuisine-right">
+                <ul>
+                    <!--<h3 class="dish-name">
+                        <span class="square"><img src="image/ligin/reddot.png" alt=""></span>
+                        <span class="can">两餐</span>
+                    </h3>-->
+
+                    <li class="itemLiRight">
+                        <!--<h3 class="dish-name">
+                            <span class="square"><img src="image/ligin/reddot.png" alt=""></span>
+                            <span class="can">两餐</span>
+                        </h3>
+                        <ul>
+                            <li>夫妻肺片</li>
+                        </ul>-->
+                    </li>
+                </ul>
+               <!-- <ul>
+                    <h3>
+                        <span class="square"><img src="image/ligin/reddot.png" alt=""></span>
+                        热菜
+                    </h3>
+                    <li>夫妻肺片</li>
+                    <li>夫妻肺片</li>
+                    <li>夫妻肺片</li>
+                    <li>夫妻肺片</li>
+                    <li>夫妻肺片</li>
+                    <li>夫妻肺片</li>
+                    <li>夫妻肺片</li>
+                    <li>夫妻肺片</li>
+                    <li>夫妻肺片</li>
+                    <li>夫妻肺片</li>
+                    <li>夫妻肺片</li>
+                </ul>-->
+            </div>
+        </div>
+    </div>
+
+    <!-- 菜品展示 -->
+    <div class="details-swiper-menu">
+        <div class="swiper-container swiper-overflow">
+            <div class="swiper-wrapper" id="swiper-wrapper-swiper">
+                <!--<div class="swiper-slide"><a href=""><img src="image/ligin/qqqq.jpg" alt=""></a></div>
+                <div class="swiper-slide"><a href=""><img src="image/ligin/qqqq.jpg" alt=""></a></div>
+                <div class="swiper-slide"><a href=""><img src="image/ligin/qqqq.jpg" alt=""></a></div>
+                <div class="swiper-slide"><a href=""><img src="image/ligin/qqqq.jpg" alt=""></a></div>-->
+            </div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <!-- 预定 -->
+    <div class="details-booked">
+        <div class="desktop">桌面</div>
+        <div class="booked-number" id="booked-number">
+            <div class="jian">-</div>
+            <div class="number">1</div>
+            <div class="jia">+</div>
+        </div>
+
+        <div class="yuding" id="booked">
+            预 定
+        </div>
+        <div class="booked-money">
+            <span id="money-reb">0</span><span class="reb">元</span>
+        </div>
+    </div>
+</div>
+<script src="js/lib/require.js" data-main="js/app/main"></script>
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/lib/swiper.js"></script>
+<script src="js/pageJs/home-package-details.js"></script>
+
+<script>
+    setRem();
+    window.addEventListener("orientationchange", setRem);
+    window.addEventListener("resize", setRem);
+    function setRem() {
+        var html = document.querySelector("html");
+        var width = html.getBoundingClientRect().width;
+        html.style.fontSize = width / 16 + "px";
+    }
+</script>
+</body>
+
+</html>

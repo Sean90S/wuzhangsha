@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>我的评论</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+	<meta name="Author" content="吾掌勺">
+	<meta name="Description" content="">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="吾掌勺">
+	<link rel="stylesheet" href="css/allcss.css">
+	<link rel="stylesheet" href="css/mui.min.css">
+
+</head>
+<body class="wzs-body">
+<div class="comment-number">共<span id="commentCount">4</span>条评论</div>
+<ul class="wzs-comment-list-wrap" id="wzs-comment-list">
+
+</ul>
+
+<script src="js/lib/require.js" data-main="js/app/main"></script>
+<script src="js/lib/zepto.min.js"></script>
+<script>
+    $(function () {
+
+        var URL = "http://localhost/wzs-api/s/api";
+        $.post(URL, { accessToken: " ", version: " ",deviceType: "3",requestCode: "30002",id: 27,"page.showCount": "50","page.currentPage": "1" }, function (data) {
+            console.log(data);
+            var commentInfo = data.objects;
+            for(var i = 0 ; i < commentInfo.length ; i++){
+                chefName = commentInfo[i].bName;
+                chefId = commentInfo[i].b_member_id;
+                score = commentInfo[i].score;
+                remark = commentInfo[i].remark;
+                create_time = commentInfo[i].create_time;
+                img_path = commentInfo[i].img_path
+                console.log(img_path)
+                var img = "";
+                if (img_path){
+                    var src = img_path.split(',');
+                    for(var n=0; n <src.length; n++)
+                        img +='<img src="'+src[i]+'" alt="" class="comment-img">'
+				}
+
+                var list = "";
+                for(var j = 0 ; j < score; j++){
+                    list += '<li class="iconfont icon-xingxing comment-star cur"></li>'
+                }
+                if(score < 5){
+                    for(var k = 0 ; k < 5 - score; k++){
+                        list += '<li class="iconfont icon-xingxing comment-star"></li>'
+                    }
+				}
+                $('#commentCount').text(commentInfo.length);
+                $("#wzs-comment-list").append(
+                    '<li class="wzs-comment-list">'+
+                        '<p class="comment-list-title">'+
+                            '<span class="comment-cook-name">'+ chefName +'</span>'+
+                            '<span class="comment-time">'+ create_time +'</span>'+
+                        '</p>'+
+                        '<p class="comment-content-wrap">'+
+                            '<span class="comment-content-title">评论：</span>'+
+                            '<span class="comment-content">'+ remark +'</span>'+
+                        '</p>'+
+						'<div class="comment-img-wrap">'+ img +'</div>' +
+                        '<ul class="comment-star-wrap">'+
+                            '<li class="comment-content-title">评星：</li>'+ list +
+                        '</ul>' +
+                    '</li>'
+                );
+            }
+        })
+    })
+</script>
+</body>
+</html>

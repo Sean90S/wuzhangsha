@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>消息</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+	<meta name="Author" content="吾掌勺">
+	<meta name="Description" content="">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="吾掌勺">
+	<link rel="stylesheet" href="css/allcss.css">
+	<link rel="stylesheet" href="css/mui.min.css">
+
+</head>
+<body class="wzs-body">
+	<div id="noMessage" style="color: whitesmoke;font-size: 14px;text-align: center;margin: 30px auto;display: none;">没有收到消息</div>
+    <ul class="news-wrap" id="newsList">
+       <!-- <li class="news-list">
+            <a href="#">
+            <span class="news-info">您的退单已经成功</span>
+            <span class="news-info-time">2017-05-02  12: 04</span>
+            </a>
+        </li>
+        <li class="news-list">
+            <span class="news-info">您的退单已经成功</span>
+            <span class="news-info-time">2017-05-02  12: 04</span>
+        </li>
+        <li class="news-list">
+            <span class="news-info">您的退单已经成功</span>
+            <span class="news-info-time">2017-05-02  12: 04</span>
+        </li>
+        <li class="news-list">
+            <span class="news-info">您的退单已经成功</span>
+            <span class="news-info-time">2017-05-02  12: 04</span>
+        </li>
+        <li class="news-list">
+            <span class="news-info">您的退单已经成功</span>
+            <span class="news-info-time">2017-05-02  12: 04</span>
+        </li>-->
+    </ul>
+
+
+    <script src="js/lib/require.js" data-main="js/app/main"></script>
+    <script src="js/lib/zepto.min.js"></script>
+    <script>
+        $(function () {
+
+            var URL = "http://localhost/wzs-api/s/api";
+            $.post(URL, { accessToken: " ", version: " ",deviceType: "3",requestCode: "97000",receive_member_id: 27,type: 1}, function (data) {
+                console.log(data);
+                var newsInfo = data.objects;
+                if(newsInfo.length){
+                    for(var i = 0 ; i < newsInfo.length ; i++){
+                        content = newsInfo[i].content;
+                        newsId = newsInfo[i].id;
+                        createTime = newsInfo[i].create_time;
+
+                        $("#newsList").append(
+                            "<li class='news-list'><a href='#' id='"+newsId+"'>" +
+                            "<span class='news-info over-hidden'>" + content + "</span>" +
+                            "<span class='news-info-time'>" + createTime + "</span></a></li>"
+                        );
+                    }
+				}else{
+                 $('#noMessage').show();
+				}
+
+
+            })
+
+
+        })
+    </script>
+</body>
+</html>

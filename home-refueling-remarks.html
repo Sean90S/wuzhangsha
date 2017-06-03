@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>家有宴席</title>
+    <meta name="description" content="">
+    <meta name="author" content="吾掌勺">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-title" content="吾掌勺">
+    <link rel="stylesheet" href="css/allcss.css">
+    <link rel="stylesheet" href="css/mui.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        .refueling-remarks {
+            width: 100%;
+            color: #fff;
+        }
+
+        .remarks {
+            margin: .853rem auto;
+            width:  83%;
+            height: 8.1rem;
+            background:  rgba(255,255,255,0.06);
+        }
+
+        .remarks .home-feast {
+            width: 90%;
+            margin: auto;
+        }
+
+        .remarks .home-feast .it-image {
+            display: inline-block;
+            margin-top: .683rem;
+        }
+
+        .remarks .home-feast .blackdot-xian{
+            display: inline-block;
+            width: 3.62rem;
+            height: 1px;
+            background: #888;
+            vertical-align: middle;
+        }
+        .remarks .home-feast img {
+            width: .234rem;
+            vertical-align: middle;
+        }
+
+        .remarks .home-feast .left-git {
+            font-size: .234rem;
+            vertical-align: middle;
+            position: relative;
+            top: 0;
+            color: #ccc;
+        }
+
+        /* 分享 */
+        .remarks .home-feast .Minute {
+            display: inline-block;
+            font-size: .683rem;
+            vertical-align: middle;
+        }
+
+        .remarks .feast-remar {
+            width: 90%;
+
+            margin: .555rem auto 0;
+            line-height: .9rem;
+            font-size: .512rem;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+<!--header-->
+<div class="refueling-remarks">
+    <div class="remarks">
+        <div class="home-feast">
+            <div class="it-image">
+                <div class="blackdot"><span class="blackdot-xian"></span><!--
+                        --><img src="image/whitedot.png"><!--
+                        --><span class="left-git">></span></div>
+            </div>
+            <div class="Minute">家有宴席</div>
+            <div class="it-image">
+                <div class="blackdot"><span class="left-git"><</span></span><!--
+                        --><img src="image/whitedot.png"><!--
+                        --><span class="blackdot-xian"></span></div>
+            </div>
+        </div>
+        <div class="feast-remar">
+            家庭聚餐、商务宴请、生日派队、婚宴各种宴席等，提供上门服务费用包含食材及服务费，如有其他需求，我们可量身定制宴席方案，全方位满足客户用餐需求。
+        </div>
+    </div>
+</div>
+<!--end header-->
+
+<!-- 页脚 -->
+<script src="js/lib/require.js" data-main="js/app/main"></script>
+<script>
+    setRem();
+    window.addEventListener("orientationchange", setRem);
+    window.addEventListener("resize", setRem);
+    function setRem() {
+        var html = document.querySelector("html");
+        var width = html.getBoundingClientRect().width;
+        html.style.fontSize = width / 16 + "px";
+    }
+</script>
+<!-- 页脚end -->
+</body>
+
+</html>

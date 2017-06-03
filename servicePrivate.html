@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>私人订制</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+	<meta name="Author" content="吾掌勺">
+	<meta name="Description" content="">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="吾掌勺">
+	<link rel="stylesheet" href="css/allcss.css">
+	<link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" href="css/swiper.min.css">
+
+</head>
+<body class="wzs-body">
+<!-- Swiper -->
+<div class="swiper-container swiper-service-container">
+	<div class="swiper-wrapper" id="private-swiper"></div>
+	<!-- Add Pagination -->
+	<div class="swiper-pagination"></div>
+
+</div>
+<div class="swiper-info">
+	<ul class="swiper-info-wrap" id="private-brief-txt"></ul>
+</div>
+
+
+<script src="js/lib/require.js" data-main="js/app/main"></script>
+<script src="js/lib/zepto.min.js"></script>
+<script src="js/lib/swiper.min.js"></script>
+<script>
+    $(function () {
+        var URL = "http://localhost/wzs-api/s/api";
+        $.ajax({
+            type : 'POST',
+            url : URL,
+            data : { accessToken: " ", version: " ",deviceType: "3",requestCode: "60000",type:1},
+            dataType : 'json',
+            success : function(data) {
+                console.log(data);
+                var imgInfo = data.objects;
+                var brief_title,content,imgSrc;
+				for(var i = 0 ; i < imgInfo.length ; i++){
+				 	brief_title = imgInfo[i].brief_title;
+				 	content = imgInfo[i].content;
+				 	imgSrc = imgInfo[i].link;
+					console.log(imgSrc)
+                    $("#private-brief-txt").append(
+						'<li class="swiper-info-list">'+
+                        '<p class="instruction-title">'+ brief_title +'</p>'+
+                        '<span class="instruction-content opcity06">'+ content +'</span>'+
+                        '</li>'
+                    );
+
+					 $("#private-swiper").append(
+						'<div class="swiper-slide swiper-slide-active" >' +
+							'<img class="swiper-img" src="'+ imgSrc +'">'+
+							'</div>'
+					 );
+				 }
+
+				var swiper = new Swiper('.swiper-service-container', {
+					pagination: '.swiper-pagination',
+					paginationClickable :true,
+					effect: 'coverflow',
+					grabCursor: true,
+					centeredSlides: true,
+					slidesPerView: 'auto',
+					onSlideChangeStart:function(swiper){
+						var index  = swiper.activeIndex;
+						$(".swiper-info-list").eq(index).addClass("cur").siblings().removeClass("cur");
+					},
+					coverflow: {
+						rotate: 0,
+						stretch: 0,
+						depth: 600,
+						modifier: 1,
+						slideShadows : true
+					}
+				});
+				$(".swiper-info-list").first().addClass('cur');
+
+            },
+            error : function(e) {
+                console.log(e)
+
+            }
+        });
+    })
+
+
+</script>
+</body>
+</html>

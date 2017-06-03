@@ -1,0 +1,330 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 296646 */
+  src: url('//at.alicdn.com/t/font_6fuq69lmytu766r.eot');
+  src: url('//at.alicdn.com/t/font_6fuq69lmytu766r.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_6fuq69lmytu766r.woff') format('woff'),
+  url('//at.alicdn.com/t/font_6fuq69lmytu766r.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_6fuq69lmytu766r.svg#iconfont') format('svg');
+}
+
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// 添加地址 加号
+@font-face {
+  font-family: 'iconfont';  /* project id 306303 */
+  src: url('//at.alicdn.com/t/font_u848e6qv67ccv7vi.eot');
+  src: url('//at.alicdn.com/t/font_u848e6qv67ccv7vi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_u848e6qv67ccv7vi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_u848e6qv67ccv7vi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_u848e6qv67ccv7vi.svg#iconfont') format('svg');
+}
+.confirmation-of-information {
+  color: #fff;
+  //padding: 0 30/@rem;
+  width: 90%;
+  margin: auto;
+
+  .xiahuanxian {
+    width: 100%;
+    height: 1px;
+    background: #8f8f94
+  }
+  //客户信息
+  .customer-information {
+    width: 100%;
+    margin-top: 20/@rem;
+    background: rgba(255,255,255,0.06);
+    font-size: 28/@rem;
+    border-radius: 8/@rem;
+
+    #homeAddress {
+      width: 100%;
+      line-height: 156/@rem;
+      font-size: 30/@rem;
+      text-align: center;
+      a{
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+      }
+    }
+
+    #address {
+      display: none;
+    }
+
+    .information-name {
+      width: 90%;
+      margin: 0 0.6rem;
+      display: inline-block;
+      padding-top: 28/@rem;
+      .name {
+        float: left;
+      }
+      .cellphone-number {
+        float: right;
+      }
+    }
+    .address {
+      width: 90%;
+      margin: 0 0.6rem;
+      display: inline-block;
+      padding-top: 20/@rem;
+      padding-bottom: 28/@rem;
+      //border-bottom: 1px solid #8f8f94;
+      .address-name {
+        float: left;
+      }
+
+      .add-git {
+        color: #8f8f94;
+        float: right;
+      }
+    }
+    .dining-time {
+      width: 90%;
+      margin: 0 0.6rem;
+      display: inline-block;
+      //border-top: 1px solid #8f8f94;
+      height: 80/@rem;
+      line-height: 80/@rem;
+      //padding-top: 28/@rem;
+      .dining {
+        float: left;
+        color: #8f8f94;
+      }
+      
+      .time{
+        float: right;
+      }
+    }
+  }
+
+  // 支付方式
+  .payment-method {
+    width: 100%;
+    font-size:  28/@rem;
+
+    //padding: 0 0.55466667rem;
+    background: rgba(255,255,255,0.06);
+    margin-top: 20/@rem;
+    border-radius: 20/@rem;
+    .payment {
+      width: 90%;
+      margin: 0 0.6rem;
+      height: 72/@rem;
+      line-height: 72/@rem;
+      //border-bottom: 1px solid #8f8f94;
+    }
+
+    .payment-classification {
+      width: 90%;
+      margin: 0 0.6rem;
+
+      li {
+        overflow: hidden;
+        width: 100%;
+        height: 80/@rem;
+        line-height: 80/@rem;
+        .pay {
+          float: left;
+          vertical-align: middle;
+        }
+
+        .the-number {
+          width: 44/@rem;
+          height: 44/@rem;
+          display: inline-block;
+          vertical-align: middle;
+          float: right;
+          color: red;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .active {
+          width: 44/@rem;
+          height: 45/@rem;
+          display: inline-block;
+          vertical-align: middle;
+          float: right;
+          color: red;
+          background: url("../image/ligin/right_big.png") no-repeat 0 1px ;
+          background-size: 100% 100%;
+        }
+      }
+
+    }
+  }
+
+  // 厨师美食
+  .chef-cuisine {
+    width: 100%;
+    font-size:  28/@rem;
+    //padding: 0 0.55466667rem;
+    background: rgba(255,255,255,0.06);
+    margin-top: 20/@rem;
+    border-radius: 20/@rem;
+
+    .cuisine {
+      width: 90%;
+      margin: 0 0.6rem;
+      height: 80/@rem;
+      line-height: 80/@rem;
+      //border-bottom: 1px solid #8f8f94;
+      display: inline-block;
+
+      .name {
+        float: left;
+      }
+
+      .dish {
+        float: right;
+        color: red;
+      }
+    }
+
+    .chef {
+
+      li {
+        display: flex;
+        width: 90%;
+        margin: 0 0.6rem;
+        height: 70/@rem;
+        line-height: 70/@rem;
+
+        p{
+          flex: 1;
+          color: #fff;
+        }
+
+        .cheng {
+          text-align: center;
+        }
+
+        .chef-reb {
+          text-align: right;
+        }
+      }
+    }
+
+    .auntie {
+      li {
+        display: flex;
+        width: 90%;
+        margin: 0 0.6rem;
+        height: 70/@rem;
+        line-height: 70/@rem;
+        .Come-on-door {
+          flex: 1;
+          vertical-align: middle;
+          position: relative;
+          input {
+            vertical-align: middle;
+            background: rgba(255, 255, 255, 0.06);
+          }
+
+          .bg-checked {
+            display: inline-block;
+            width: 24/@rem;
+            height: 24/@rem;
+            background: url("../image/ligin/dagou.png") no-repeat;
+            background-size: 100% 100%;
+            position: absolute;
+            top: 26/@rem;
+            opacity: 0;
+          }
+
+          #weidagou {
+            display: inline-block;
+            width: 24/@rem;
+            height: 24/@rem;
+          }
+        }
+      }
+    }
+
+    .total {
+      width: 90%;
+      margin: 0 0.6rem;
+      height: 96/@rem;
+      line-height: 96/@rem;
+      //border-top: 1px solid #8f8f94;
+
+      .gongji {
+        float: left;
+        color: #8f8f94;
+      }
+
+      .yuan {
+        float: right;
+      }
+    }
+  }
+
+  // 人数
+
+  .number-people {
+    width: 100%;
+    font-size:  28/@rem;
+    //padding: 0 0.55466667rem;
+    background: rgba(255,255,255,0.06);
+    margin-top: 20/@rem;
+    border-radius: 20/@rem;
+
+    .people {
+      width: 90%;
+      margin: 0 0.6rem;
+      overflow: hidden;
+      height: 80/@rem;
+      line-height: 80/@rem;
+      //border-bottom: 1px solid #8f8f94;
+      .beizhu {
+        float: left;
+      }
+      .jiantou {
+        float: right;
+      }
+    }
+
+    .description {
+      width: 90%;
+      margin: 0 0.6rem;
+      padding: 20/@rem 0 34/@rem 0;
+      line-height: 40/@rem;
+      outline: none;
+    }
+  }
+
+  .confirm-payment {
+    width: 80%;
+    height: 92/@rem;
+    background: red;
+    margin: auto;
+    border-radius: 50/@rem;
+    margin-top: 100/@rem;
+    margin-bottom: 58/@rem;
+    //padding-bottom: 58/@rem;
+    button {
+      width: 100%;
+      height: 100%;
+      border-radius: 50/@rem;
+      background: red;
+      outline: none;
+      border: none;
+    }
+  }
+
+
+
+
+}

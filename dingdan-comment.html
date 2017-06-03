@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>评论</title>
+	<meta name="description" content="">
+	<meta name="author" content="吾掌勺">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<meta name="apple-mobile-web-app-title" content="吾掌勺">
+	<link rel="stylesheet" href="css/allcss.css">
+	<link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" href="css/swiper.min.css">
+
+</head>
+
+<body class="myBody body-bg">
+    <section class="dingdan-wrap dingdan-wrap-bottom">
+        <div class="comment-title">
+            <div class="mui-row">
+                <div class="mui-col-xs-3">
+                    <div class="chef-pic"><img src="images/chef.jpg" class="chef-pic-img" id="chef_head_img"> </div>
+                </div>
+                <div class="mui-col-xs-9">
+                    <div class="chef-name" id="chefName">夏大厨</div>
+                    <div class="chef-special over-hidden">简介：<span id="chefBrief">擅长本帮菜，川菜，家常菜</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="dingdan-list">
+            <div class="dingdan-comment-star">
+                <!-- 星星评分 -->
+                <div class="star-score mui-clearfix">
+                    <span class="pltxt">评论</span>
+                    <ul class="starUl">
+                        <li class="star iconfont icon-xingxing light"></li>
+                        <li class="star iconfont icon-xingxing"></li>
+                        <li class="star iconfont icon-xingxing"></li>
+                        <li class="star iconfont icon-xingxing"></li>
+                        <li class="star iconfont icon-xingxing"></li>
+                    </ul>
+                </div>
+                <!--评论输入框-->
+                <textarea name="comment-text" id="commentTxt" class="text-comment"  maxlength="140"  placeholder="是否满足你的期待？说说你的想法吧"></textarea>
+             <!--   <div class="z_photo upimg-div mui-clearfix" >
+                  &lt;!&ndash;  <section class="up-section mui-pull-left">
+                        <span class="up-span"></span>
+                        <img class="close-upimg" src="images/a7.png">
+                        <img class="up-img" src="blob:http://localhost:63342/0482023a-8e93-4f9b-beae-cc8890ee9f16">
+                        <p class="img-name-p">马雪荣.png</p>
+                        <input id="taglocation" name="taglocation" value="" type="hidden"><input id="tags" name="tags" value="" type="hidden">
+                    </section>&ndash;&gt;
+                </div>-->
+               <!-- <div class="mui-clearfix">
+                    <div id="imageList" class="mui-pull-left"></div>
+                    <div class="z_file mui-pull-left">
+                        <div class="add-img mui-icon mui-icon-plusempty" id="input-bg"></div>
+                        <input name="Filedata" type="file" id="uploadFile" multiple="multiple"/>
+                    </div>
+                </div>-->
+
+                <div id="imageList" class="mui-clearfix">
+
+                    <div class="z_file">
+                        <span class="add-img mui-icon mui-icon-plusempty" id="input-bg"></span>
+                        <input name="Filedata" type="file" id="uploadFile" multiple="multiple"/>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--  待修改-->
+    <aside class="mask works-mask">
+        <div class="mask-content">
+            <p class="del-p ">您确定要删除作品图片吗？</p>
+            <p class="check-p"><span class="del-com wsdel-ok">确定</span><span class="wsdel-no">取消</span></p>
+        </div>
+    </aside>
+    <footer class="comment-foot">
+         <a class="comment-foot-btn" type="button" state=0>发表评论</a>
+    </footer>
+<!--<script src="js/lib/require.js" data-main="js/app/main"></script>-->
+<script src="js/lib/jquery.min.js"></script>
+<!--<script src="js/lib/zepto.min.js"></script>-->
+<script src="js/lib/mui.min.js"></script>
+<!--<script src="js/app/upimg.js"></script>-->
+<script src="js/lib/imgPreview.js"></script>
+<script src="js/app/dingdan-comment.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+	<meta name="Author" content="吾掌勺">
+	<meta name="Description" content="">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="吾掌勺">
+	<link rel="stylesheet" href="css/allcss.css">
+	<link rel="stylesheet" href="css/mui.min.css">
+
+	<title>我的地址</title>
+</head>
+<body class="wzs-body">
+<section class="wzs-head">
+    <a href="addressIndex.html" id="manageAddress">确认</a>
+</section>
+<ul class="personal-address-wrap address-manage-wrap">
+<!--    <li class="address-delete-list">
+        <p class="address-name">温和同学</p>
+        <p class="address-tel">138*****123</p>
+        <p class="address-details">浦东新区张江高科碧波路123号5号楼5楼</p>
+        <div class="address-delete mui-icon mui-icon-minus"></div>
+    </li>
+    <li class="address-delete-list">
+        <p class="address-name">温和同学</p>
+        <p class="address-tel">138*****123</p>
+        <p class="address-details">浦东新区张江高科碧波路123号5号楼5楼</p>
+        <div class="address-delete mui-icon mui-icon-minus address-unselect"></div>
+    </li>-->
+</ul>
+
+<script src="js/lib/require.js" data-main="js/app/main"></script>
+<script src="js/lib/zepto.min.js"></script>
+<script >
+    var URL = "http://localhost/wzs-api/s/api";
+    $(function(){
+        $.post(URL, { accessToken: " ", version: " ",deviceType: "3",requestCode: "10100",member_id: "7" }, function (data) {
+            console.log(data);
+            var addressInfo = data.objects;
+            var address,telephone,name,addressId;
+            for(var i = 0 ; i < addressInfo.length ; i++){
+                address = addressInfo[i].address;
+                addressId =  addressInfo[i].id;
+                name = addressInfo[i].name;
+                telephone = addressInfo[i].phone;
+                $(".personal-address-wrap").append("<li class='address-delete-list'><p class='address-name'>" + name + "</p><p class='address-tel'>" + telephone +
+                    "</p><p class='address-details'>" + address + "</p><div class='address-delete address-select' id='"+addressId+"'></div></li>");
+//                    "</p><p class='address-details'>" + address + "</p><div class='address-delete mui-icon mui-icon-minus address-unselect' id='"+addressId+"'></div></li>");
+            }
+        });
+
+    /*    $('.address-delete').live('tap',function () {
+            if($(this).hasClass('mui-icon-minus')){
+                $(this).removeClass('mui-icon-minus').addClass('address-select');
+            }else{
+                $(this).removeClass('address-select').addClass('mui-icon-minus');
+            }
+
+        })*/
+
+        $('.address-delete').live('tap',function () {
+            var selectId = $(this).attr('id'); console.log(selectId);
+
+            $(this).parent().remove();
+
+            var btnArray = ['取消', '确认'];
+            mui.confirm('确认删除所选地址？', '', btnArray, function(e) {
+                if (e.index == 1) {
+
+                    mui.ajax("http://localhost/wzs-api/s/api",
+                        {
+                            data:{accessToken: '', version: '',deviceType: '3',requestCode: '10102',id: selectId ,member_id:"27",state:"1"},
+                            type:'POST',
+                            dataType:'json',
+                            timeout:10000,//超时时间设置为10秒；
+                            success:function(data) {
+                                console.log(data);
+                                mui.openWindow({
+                                    url: 'addressIndex.html'
+                                });
+
+                            },
+                            error:function(xhr,type,errorThrown)
+                            {
+                                //异常处理；
+                                mui.alert("删除失败！");
+                                console.log(type);
+                            }
+                        });
+
+                }
+            })
+
+/*
+
+            $.post(URL, { accessToken: " ", version: " ",deviceType: "3",requestCode: "10102",member_id: "7",id: "+ selectId +" }, function (data) {
+                console.log(data);
+
+            });
+*/
+
+
+
+        })
+    });
+</script>
+</body>
+</html>

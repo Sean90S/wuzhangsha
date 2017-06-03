@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>吾掌勺</title>
+	<meta name="description" content="">
+	<meta name="author" content="吾掌勺">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<meta name="apple-mobile-web-app-title" content="吾掌勺">
+	<link rel="stylesheet" href="css/allcss.css">
+	<link rel="stylesheet" href="css/mui.css">
+	<link rel="stylesheet" href="css/swiper.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="favicon.ico">
+	<style>
+		.swiper-pagination-bullet{
+			border-radius: 0;
+			transform: rotate(45deg);
+			background: #FFFFFF;
+		}
+
+		.swiper-pagination-bullet-active {
+			background: #EF2432;
+		}
+
+		.mui-bar{
+			color: #fff;
+		}
+	</style>
+</head>
+
+<body>
+<div class="mui-bar mui-bar-footer mui-bar-bg">
+	<div class="mui-row mui-text-center">
+
+		<div class="mui-col-xs-3 foot-list active-page">
+			<a href="index.html" id="">
+				<i class="iconfont icon-zhuye"></i>
+				<p class="foot-text">首页</p>
+			</a>
+		</div>
+
+		<div class="mui-col-xs-3 foot-list">
+			<a href="dingdan.html" class="" id="dingdanPage">
+				<i class="iconfont icon-dingdan"></i>
+				<p class="foot-text">订单</p>
+			</a>
+		</div>
+
+		<div class="mui-col-xs-3 foot-list">
+			<a href="myFavorite.html">
+				<i class="iconfont icon-shoucang"></i>
+				<p class="foot-text">收藏</p>
+			</a>
+		</div>
+
+		<div class="mui-col-xs-3 foot-list">
+			<a href="personalCenter.html">
+				<i class="iconfont icon-foot04 message"></i>
+				<p class="foot-text">我的</p>
+			</a>
+		</div>
+
+	</div>
+</div>
+	<!--header-->
+	<div class="homt-index" id="homt-index-hoot">
+		<div class="nav-header">
+			<ul class="nav-address">
+				<li class="address">上海</li>
+				<li class="title">吾掌勺</li>
+				<li class="service-description">
+					<a href="serviceIndex.html">
+						服务说明
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- 轮播图 -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper"></div>
+			<div class="swiper-pagination">
+				<span class="swiper-pagination-bullet swiper-pagination-bullet-active"><i class="iconfont">&#xe601;</i></span>
+			</div>
+		</div>
+
+		<!-- 私人定制 家有宴席 -->
+		<div class="private-custom">
+			<ul class="custom-made">
+				<li class="made-mar-le">
+					<div class="made-image">
+						<img src="image/ligin/sirendingzhi.png" alt="">
+					</div>
+				</li>
+				<li class="made-mar-ri">
+					<a href="">
+						<div class="made-image">
+							<a href="home-refueling-banquet.html"><img src="image/ligin/jiayouyanxi.png" alt=""></a>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<!--<div class="nav">-->
+			<!--<ul>-->
+				<!--<li class="active">-->
+					<!--<div class="iconfont">&#xe602;</div>-->
+					<!--<div>首页</div>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<div class="iconfont">&#xe618;</div>-->
+					<!--<div>订单</div>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<div class="iconfont">&#xe621;</div>-->
+					<!--<div>收藏</div>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<div class="iconfont">&#xe619;</div>-->
+					<!--<div>我的</div>-->
+					<!--<span class="not-seen"></span>-->
+				<!--</li>-->
+			<!--</ul>-->
+		<!--</div>-->
+	</div>
+	<script src="js/lib/require.js" data-main="js/app/main"></script>
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/lib/swiper.min.js"></script>
+	<script src="js/pageJs/index.js"></script>
+	<script>
+		setRem();
+		window.addEventListener("orientationchange", setRem);
+		window.addEventListener("resize", setRem);
+		function setRem() {
+			var html = document.querySelector("html");
+			var width = html.getBoundingClientRect().width;
+			html.style.fontSize = width / 16 + "px";
+		}
+	</script>
+</body>
+
+</html>
